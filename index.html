@@ -5,24 +5,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        * {
-            margin: 0px;
-            padding: 0px;
-            box-sizing: border-box;
-            background-color: black;
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">@theme {
+            --color-bg1: #f2f2f2;
+            --breakpoint-md: 38.75rem;
         }
-        
-        html, body {
-            width: 100%;
+
+        html,
+        body {
             height: 100%;
+            width: 100%;
+            overflow-x: hidden;
         }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.js"></script>
 </head>
 
 <body>
-    <div class="black">
-        <img src="Lust.png" alt="" width="100px">
+    <div class="bg-black">
+        <img src="Lust.png" class="" alt="" width="100px">
     </div>
 </body>
 

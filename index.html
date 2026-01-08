@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Lust | Home</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <style type="text/tailwindcss">
         @theme {
@@ -25,19 +25,24 @@
 </head>
 
 <body>
-    <div class="bg-orange-600 flex justify-between px-20">
+    <div class="bg-orange-600 flex justify-between px-20 navbar">
         <div>
             <img src="img/navbar/Lust.png" class="w-[100px]" alt="" width="">
         </div>
         <div class="flex justify-center items-center">
             <ul class="text-[20px] text-white flex items-center gap-10">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Product</a></li>
-                <li class="border-2 border-solid rounded-full p-2"><a href="#"><img
-                            src="img/navbar/shopping-bag-icon.svg" alt=""></a></li>
+                <li class=""><a class="home" href="index.html">Home</a>
+                </li>
+                <li class="product">
+                    <a href="product.html">Product</a>
+                </li>
+                <li class="border-2 border-solid rounded-full p-2">
+                    <a href="#"><img src="img/navbar/shopping-bag-icon.svg" alt=""></a>
+                </li>
             </ul>
         </div>
     </div>
+    <script src="script.js"></script>
 </body>
 
 </html>

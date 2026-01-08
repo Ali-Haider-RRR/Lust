@@ -8,7 +8,6 @@ function setActive(activeElement, inactiveElement) {
     });
 }
 let currentPath = window.location.pathname;
-
 if (currentPath.includes("product")) {
     setActive(productLink, homeLink);
 } else {

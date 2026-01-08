@@ -1,4 +1,4 @@
-let activeClasses = ["bg-black", "p-1.5", "rounded", "border-2", "border-solid"];
+let activeClasses = ["bg-blue-800", "p-1.5", "rounded-xl", "border-2", "border-solid"];
 let homeLink = document.querySelector(".home");
 let productLink = document.querySelector(".product");
 function setActive(activeElement, inactiveElement) {

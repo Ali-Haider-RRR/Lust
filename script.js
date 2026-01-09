@@ -1,15 +1,30 @@
-let activeClasses = ["bg-blue-800", "p-1.5", "rounded-xl", "border-2", "border-solid"];
-let homeLink = document.querySelector(".home");
-let productLink = document.querySelector(".product");
-function setActive(activeElement, inactiveElement) {
-    activeClasses.forEach(val => {
-        activeElement.classList.add(val);
-        inactiveElement.classList.remove(val);
+
+(() => {
+  const cartCountEl = document.querySelector("[data-cart-count]");
+  const toast = document.getElementById("toast");
+  const year = document.getElementById("year");
+
+  if (year) year.textContent = new Date().getFullYear();
+
+  let count = 0;
+  let toastTimer = null;
+
+  function showToast() {
+    if (!toast) return;
+    toast.classList.remove("hidden");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toast.classList.add("hidden"), 2000);
+  }
+
+  document.querySelectorAll("[data-add-to-cart]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      count += 1;
+      if (cartCountEl) cartCountEl.textContent = String(count);
+      showToast();
+      
+      // Add pulse animation to cart badge
+      cartCountEl?.classList.add('animate-pulse');
+      setTimeout(() => cartCountEl?.classList.remove('animate-pulse'), 600);
     });
-}
-let currentPath = window.location.pathname;
-if (currentPath.includes("product")) {
-    setActive(productLink, homeLink);
-} else {
-    setActive(homeLink, productLink);
-}
+  });
+})();

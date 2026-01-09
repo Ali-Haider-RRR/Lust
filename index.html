@@ -19,13 +19,11 @@
     }
 
     .clamp-2 {
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
+      
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
 
-    /* Glow effect */
     .glow-orange {
       box-shadow: 0 0 30px rgba(249, 115, 22, 0.3), 0 0 60px rgba(249, 115, 22, 0.15);
     }
@@ -33,8 +31,6 @@
     .glow-pink {
       box-shadow: 0 0 25px rgba(236, 72, 153, 0.25);
     }
-
-    /* Floating animation */
     @keyframes float {
       0%, 100% { transform: translateY(0px); }
       50% { transform: translateY(-10px); }
@@ -43,12 +39,9 @@
     .animate-float {
       animation: float 6s ease-in-out infinite;
     }
-
-    /* Star rating */
     .star-fill { color: #f59e0b; }
     .star-empty { color: rgba(255, 255, 255, 0.2); }
 
-    /* Shimmer effect on hover */
     .shimmer {
       position: relative;
       overflow: hidden;

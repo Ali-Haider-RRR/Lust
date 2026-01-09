@@ -53,8 +53,6 @@ function applyFilter() {
 
   resultsCount.textContent = String(shown);
   noResults.classList.toggle('hidden', shown !== 0);
-
-  // Optional: hide empty section grids visually by dimming headings (kept simple here)
 }
 
 input.addEventListener('input', applyFilter);
@@ -63,6 +61,4 @@ clearBtn.addEventListener('click', () => {
   input.focus();
   applyFilter();
 });
-
-// initial count
 applyFilter();

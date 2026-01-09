@@ -25,34 +25,47 @@
 </head>
 
 <body>
-    <div class="bg-orange-600 flex justify-between px-20 navbar">
-        <div>
-            <img src="img/navbar/Lust.png" class="w-[100px]" alt="" width="">
+    <header class="sticky top-0 z-50 bg-slate-950/80 backdrop-blur-xl border-b border-white/10 shadow-lg">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
+            <nav class="flex items-center justify-between py-4">
+                <a href="index.html" class="flex items-center gap-3 group">
+                    <div class="relative">
+                        <img src="img/navbar/Lust.png"
+                            class="w-[92px] drop-shadow-lg transition-transform group-hover:scale-105"
+                            alt="Lust logo" />
+                        <div
+                            class="absolute inset-0 bg-orange-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity">
+                        </div>
+                    </div>
+                </a>
+
+                <div class="flex items-center gap-4 sm:gap-8">
+                    <a href="index.html" class="relative text-white/90 hover:text-white transition font-medium group">
+                        <span>Home</span>
+                        <span
+                            class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-orange-500 to-pink-500 group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                    <a href="product.html" class="relative text-white/80 hover:text-white transition font-medium group">
+                        <span>Products</span>
+                        <span
+                            class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-orange-500 to-pink-500 group-hover:w-full transition-all duration-300"></span>
+                    </a>
+
+                    <button type="button"
+                        class="relative inline-flex items-center justify-center rounded-full border border-orange-500/30 bg-gradient-to-br from-orange-500/10 to-pink-500/10 hover:from-orange-500/20 hover:to-pink-500/20 transition-all duration-300 px-4 py-2.5 group">
+                        <img src="img/navbar/shopping-bag-icon.svg" alt="Cart"
+                            class="h-5 w-5 group-hover:scale-110 transition-transform" />
+                        <span class="sr-only">Cart</span>
+                        <span data-cart-count
+                            class="absolute -top-2 -right-2 min-w-6 h-6 px-1.5 rounded-full bg-gradient-to-br from-orange-500 to-pink-600 text-white text-xs font-bold grid place-items-center shadow-lg glow-orange">
+                            0
+                        </span>
+                    </button>
+                </div>
+            </nav>
         </div>
-        <div class="flex justify-center items-center">
-            <ul class="text-[20px] text-white flex items-center gap-10">
-                <li class=""><a class="home" href="index.html">Home</a>
-                </li>
-                <li class="product">
-                    <a href="product.html">Product</a>
-                </li>
-                <li class="border-2 border-solid rounded-full p-2">
-                    <a href="#"><img src="img/navbar/shopping-bag-icon.svg" alt=""></a>
-                </li>
-            </ul>
-        </div>
-    </div>
+    </header>
     <script src="script.js"></script>
-</body>
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
-</head>
-
-<body>
-
 </body>
 
 </html>

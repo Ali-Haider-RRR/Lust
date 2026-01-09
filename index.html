@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,7 +12,7 @@
 
   <style type="text/tailwindcss">
     html, body { height: 100%; }
-    body { 
+    body {
       background: radial-gradient(ellipse 1400px 600px at 25% 0%, rgba(249, 115, 22, 0.15), transparent 50%),
                   radial-gradient(ellipse 1200px 500px at 80% 20%, rgba(236, 72, 153, 0.12), transparent 50%),
                   radial-gradient(ellipse 1000px 450px at 50% 80%, rgba(59, 130, 246, 0.1), transparent 50%),
@@ -29,7 +30,7 @@
     .glow-orange {
       box-shadow: 0 0 30px rgba(249, 115, 22, 0.3), 0 0 60px rgba(249, 115, 22, 0.15);
     }
-    
+
     .glow-pink {
       box-shadow: 0 0 25px rgba(236, 72, 153, 0.25);
     }
@@ -39,7 +40,7 @@
       0%, 100% { transform: translateY(0px); }
       50% { transform: translateY(-10px); }
     }
-    
+
     .animate-float {
       animation: float 6s ease-in-out infinite;
     }
@@ -53,7 +54,7 @@
       position: relative;
       overflow: hidden;
     }
-    
+
     .shimmer::before {
       content: '';
       position: absolute;
@@ -64,7 +65,7 @@
       background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
       transition: left 0.5s;
     }
-    
+
     .shimmer:hover::before {
       left: 100%;
     }
@@ -77,29 +78,32 @@
       <nav class="flex items-center justify-between py-4">
         <a href="index.html" class="flex items-center gap-3 group">
           <div class="relative">
-            <img src="img/navbar/Lust.png" class="w-[92px] drop-shadow-lg transition-transform group-hover:scale-105" alt="Lust logo" />
-            <div class="absolute inset-0 bg-orange-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            <img src="img/navbar/Lust.png" class="w-[92px] drop-shadow-lg transition-transform group-hover:scale-105"
+              alt="Lust logo" />
+            <div class="absolute inset-0 bg-orange-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity">
+            </div>
           </div>
         </a>
 
         <div class="flex items-center gap-4 sm:gap-8">
-          <a href="index.html"
-             class="relative text-white/90 hover:text-white transition font-medium group">
+          <a href="index.html" class="relative text-white/90 hover:text-white transition font-medium group">
             <span>Home</span>
-            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-orange-500 to-pink-500 group-hover:w-full transition-all duration-300"></span>
+            <span
+              class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-orange-500 to-pink-500 group-hover:w-full transition-all duration-300"></span>
           </a>
-          <a href="product.html"
-             class="relative text-white/80 hover:text-white transition font-medium group">
+          <a href="product.html" class="relative text-white/80 hover:text-white transition font-medium group">
             <span>Products</span>
-            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-orange-500 to-pink-500 group-hover:w-full transition-all duration-300"></span>
+            <span
+              class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-orange-500 to-pink-500 group-hover:w-full transition-all duration-300"></span>
           </a>
 
           <button type="button"
-                  class="relative inline-flex items-center justify-center rounded-full border border-orange-500/30 bg-gradient-to-br from-orange-500/10 to-pink-500/10 hover:from-orange-500/20 hover:to-pink-500/20 transition-all duration-300 px-4 py-2.5 group">
-            <img src="img/navbar/shopping-bag-icon.svg" alt="Cart" class="h-5 w-5 group-hover:scale-110 transition-transform" />
+            class="relative inline-flex items-center justify-center rounded-full border border-orange-500/30 bg-gradient-to-br from-orange-500/10 to-pink-500/10 hover:from-orange-500/20 hover:to-pink-500/20 transition-all duration-300 px-4 py-2.5 group">
+            <img src="img/navbar/shopping-bag-icon.svg" alt="Cart"
+              class="h-5 w-5 group-hover:scale-110 transition-transform" />
             <span class="sr-only">Cart</span>
             <span data-cart-count
-                  class="absolute -top-2 -right-2 min-w-6 h-6 px-1.5 rounded-full bg-gradient-to-br from-orange-500 to-pink-600 text-white text-xs font-bold grid place-items-center shadow-lg glow-orange">
+              class="absolute -top-2 -right-2 min-w-6 h-6 px-1.5 rounded-full bg-gradient-to-br from-orange-500 to-pink-600 text-white text-xs font-bold grid place-items-center shadow-lg glow-orange">
               0
             </span>
           </button>
@@ -110,52 +114,55 @@
 
   <main>
     <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10 pt-8">
-      <div class="relative overflow-hidden rounded-3xl border border-white/10 bg-slate-900/40 shadow-2xl backdrop-blur-sm">
+      <div
+        class="relative overflow-hidden rounded-3xl border border-white/10 bg-slate-900/40 shadow-2xl backdrop-blur-sm">
         <div id="controls-carousel" class="relative w-full" data-carousel="slide">
           <div class="relative h-[65vh] min-h-[480px] max-h-[750px] overflow-hidden">
             <div class="hidden duration-700 ease-in-out" data-carousel-item>
-              <a href="#C1" class="block h-full w-full">
-                <img src="img/slider/Slider1.png"
-                     class="absolute inset-0 h-full w-full object-cover"
-                     alt="Gaming collection" />
+              <!-- CHANGED: goes to product page -->
+              <a href="product.html#C1" class="block h-full w-full">
+                <img src="img/slider/Slider1.png" class="absolute inset-0 h-full w-full object-cover"
+                  alt="Gaming collection" />
               </a>
             </div>
             <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
-              <a href="#C2" class="block h-full w-full">
-                <img src="img/slider/Slider2.jpg"
-                     class="absolute inset-0 h-full w-full object-cover"
-                     alt="Watches collection" />
+              <!-- CHANGED: goes to product page -->
+              <a href="product.html#C2" class="block h-full w-full">
+                <img src="img/slider/Slider2.jpg" class="absolute inset-0 h-full w-full object-cover"
+                  alt="Watches collection" />
               </a>
             </div>
             <div class="hidden duration-700 ease-in-out" data-carousel-item>
-              <a href="#C3" class="block h-full w-full">
-                <img src="img/slider/Slider3.png"
-                     class="absolute inset-0 h-full w-full object-cover"
-                     alt="T-shirts collection" />
+              <!-- CHANGED: goes to product page -->
+              <a href="product.html#C3" class="block h-full w-full">
+                <img src="img/slider/Slider3.png" class="absolute inset-0 h-full w-full object-cover"
+                  alt="T-shirts collection" />
               </a>
             </div>
             <div class="hidden duration-700 ease-in-out" data-carousel-item>
-              <a href="#C4" class="block h-full w-full">
-                <img src="img/slider/Slider4.jpg"
-                     class="absolute inset-0 h-full w-full object-cover"
-                     alt="Mobiles and tablets collection" />
+              <!-- CHANGED: goes to product page -->
+              <a href="product.html#C4" class="block h-full w-full">
+                <img src="img/slider/Slider4.jpg" class="absolute inset-0 h-full w-full object-cover"
+                  alt="Mobiles and tablets collection" />
               </a>
             </div>
             <div class="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/60 to-gray-950/20"></div>
 
             <div class="absolute inset-x-0 bottom-0 p-6 sm:p-12">
               <div class="max-w-2xl">
-                <div class="inline-flex items-center gap-2 rounded-full border border-orange-500/30 bg-orange-500/10 backdrop-blur-sm px-4 py-1.5 mb-4">
+                <div
+                  class="inline-flex items-center gap-2 rounded-full border border-orange-500/30 bg-orange-500/10 backdrop-blur-sm px-4 py-1.5 mb-4">
                   <span class="relative flex h-2 w-2">
-                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
+                    <span
+                      class="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
                     <span class="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
                   </span>
                   <span class="text-orange-300 font-semibold text-sm tracking-wide">HOT DEALS • FRESH DROPS</span>
                 </div>
-                
+
                 <h1 class="text-4xl sm:text-6xl font-black leading-tight">
                   <span class="bg-gradient-to-r from-white via-orange-100 to-pink-200 bg-clip-text text-transparent">
-                    Premium Gear.<br/>Unbeatable Style.
+                    Premium Gear.<br />Unbeatable Style.
                   </span>
                 </h1>
                 <p class="mt-4 text-lg text-white/80 max-w-lg">
@@ -163,28 +170,31 @@
                 </p>
 
                 <div class="mt-8 flex flex-wrap gap-4">
-                  <a href="#C1"
-                     class="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-orange-500 to-pink-600 px-7 py-3.5 text-white font-bold hover:shadow-xl hover:shadow-orange-500/50 transition-all duration-300 transform hover:scale-105">
+                  <!-- CHANGED: goes to product page -->
+                  <a href="product.html#C1"
+                    class="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-orange-500 to-pink-600 px-7 py-3.5 text-white font-bold hover:shadow-xl hover:shadow-orange-500/50 transition-all duration-300 transform hover:scale-105">
                     <span>Explore Gaming</span>
                     <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
                   </a>
-                  <a href="#C2"
-                     class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 backdrop-blur-sm px-7 py-3.5 text-white font-semibold hover:bg-white/10 transition-all duration-300">
+                  <!-- CHANGED: goes to product page -->
+                  <a href="product.html#C2"
+                    class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 backdrop-blur-sm px-7 py-3.5 text-white font-semibold hover:bg-white/10 transition-all duration-300">
                     <i class="fa-regular fa-clock"></i>
                     <span>Luxury Watches</span>
                   </a>
                 </div>
               </div>
             </div>
+
             <button type="button"
-                    class="absolute left-4 top-1/2 -translate-y-1/2 z-10 rounded-full bg-black/50 hover:bg-black/70 backdrop-blur-sm border border-white/20 p-3.5 transition-all hover:scale-110"
-                    data-carousel-prev>
+              class="absolute left-4 top-1/2 -translate-y-1/2 z-10 rounded-full bg-black/50 hover:bg-black/70 backdrop-blur-sm border border-white/20 p-3.5 transition-all hover:scale-110"
+              data-carousel-prev>
               <span class="sr-only">Previous</span>
               <i class="fa-solid fa-chevron-left text-lg"></i>
             </button>
             <button type="button"
-                    class="absolute right-4 top-1/2 -translate-y-1/2 z-10 rounded-full bg-black/50 hover:bg-black/70 backdrop-blur-sm border border-white/20 p-3.5 transition-all hover:scale-110"
-                    data-carousel-next>
+              class="absolute right-4 top-1/2 -translate-y-1/2 z-10 rounded-full bg-black/50 hover:bg-black/70 backdrop-blur-sm border border-white/20 p-3.5 transition-all hover:scale-110"
+              data-carousel-next>
               <span class="sr-only">Next</span>
               <i class="fa-solid fa-chevron-right text-lg"></i>
             </button>
@@ -192,10 +202,15 @@
         </div>
       </div>
     </section>
+
     <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10 mt-10">
       <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
-        <a href="#C1" class="group relative rounded-2xl border border-white/10 bg-gradient-to-br from-orange-500/10 to-transparent hover:from-orange-500/20 transition-all duration-300 p-5 overflow-hidden">
-          <div class="absolute top-0 right-0 w-20 h-20 bg-orange-500/20 rounded-full blur-2xl group-hover:w-32 group-hover:h-32 transition-all duration-500"></div>
+        <!-- CHANGED: go to product page -->
+        <a href="product.html#C1"
+          class="group relative rounded-2xl border border-white/10 bg-gradient-to-br from-orange-500/10 to-transparent hover:from-orange-500/20 transition-all duration-300 p-5 overflow-hidden">
+          <div
+            class="absolute top-0 right-0 w-20 h-20 bg-orange-500/20 rounded-full blur-2xl group-hover:w-32 group-hover:h-32 transition-all duration-500">
+          </div>
           <div class="relative">
             <i class="fa-solid fa-gamepad text-2xl text-orange-400 mb-2"></i>
             <div class="text-white font-bold text-lg">Gaming</div>
@@ -203,8 +218,11 @@
           </div>
         </a>
 
-        <a href="#C2" class="group relative rounded-2xl border border-white/10 bg-gradient-to-br from-pink-500/10 to-transparent hover:from-pink-500/20 transition-all duration-300 p-5 overflow-hidden">
-          <div class="absolute top-0 right-0 w-20 h-20 bg-pink-500/20 rounded-full blur-2xl group-hover:w-32 group-hover:h-32 transition-all duration-500"></div>
+        <a href="product.html#C2"
+          class="group relative rounded-2xl border border-white/10 bg-gradient-to-br from-pink-500/10 to-transparent hover:from-pink-500/20 transition-all duration-300 p-5 overflow-hidden">
+          <div
+            class="absolute top-0 right-0 w-20 h-20 bg-pink-500/20 rounded-full blur-2xl group-hover:w-32 group-hover:h-32 transition-all duration-500">
+          </div>
           <div class="relative">
             <i class="fa-regular fa-clock text-2xl text-pink-400 mb-2"></i>
             <div class="text-white font-bold text-lg">Watches</div>
@@ -212,8 +230,11 @@
           </div>
         </a>
 
-        <a href="#C3" class="group relative rounded-2xl border border-white/10 bg-gradient-to-br from-blue-500/10 to-transparent hover:from-blue-500/20 transition-all duration-300 p-5 overflow-hidden">
-          <div class="absolute top-0 right-0 w-20 h-20 bg-blue-500/20 rounded-full blur-2xl group-hover:w-32 group-hover:h-32 transition-all duration-500"></div>
+        <a href="product.html#C3"
+          class="group relative rounded-2xl border border-white/10 bg-gradient-to-br from-blue-500/10 to-transparent hover:from-blue-500/20 transition-all duration-300 p-5 overflow-hidden">
+          <div
+            class="absolute top-0 right-0 w-20 h-20 bg-blue-500/20 rounded-full blur-2xl group-hover:w-32 group-hover:h-32 transition-all duration-500">
+          </div>
           <div class="relative">
             <i class="fa-solid fa-shirt text-2xl text-blue-400 mb-2"></i>
             <div class="text-white font-bold text-lg">T‑Shirts</div>
@@ -221,8 +242,11 @@
           </div>
         </a>
 
-        <a href="#C4" class="group relative rounded-2xl border border-white/10 bg-gradient-to-br from-purple-500/10 to-transparent hover:from-purple-500/20 transition-all duration-300 p-5 overflow-hidden">
-          <div class="absolute top-0 right-0 w-20 h-20 bg-purple-500/20 rounded-full blur-2xl group-hover:w-32 group-hover:h-32 transition-all duration-500"></div>
+        <a href="product.html#C4"
+          class="group relative rounded-2xl border border-white/10 bg-gradient-to-br from-purple-500/10 to-transparent hover:from-purple-500/20 transition-all duration-300 p-5 overflow-hidden">
+          <div
+            class="absolute top-0 right-0 w-20 h-20 bg-purple-500/20 rounded-full blur-2xl group-hover:w-32 group-hover:h-32 transition-all duration-500">
+          </div>
           <div class="relative">
             <i class="fa-solid fa-mobile-screen text-2xl text-purple-400 mb-2"></i>
             <div class="text-white font-bold text-lg">Tech</div>
@@ -231,13 +255,19 @@
         </a>
       </div>
     </section>
+
+    <!-- HOME STILL SHOWS PRODUCTS (your original sections) -->
     <section id="C1" class="scroll-mt-24 mx-auto max-w-7xl px-4 sm:px-6 lg:px-10 mt-16">
       <div class="flex items-center gap-5 mb-8">
-        <div class="relative rounded-2xl border border-orange-500/30 bg-gradient-to-br from-orange-500/20 to-transparent p-4 glow-orange">
+        <!-- CHANGED: heading image links to product page -->
+        <a href="product.html#C1"
+          class="relative rounded-2xl border border-orange-500/30 bg-gradient-to-br from-orange-500/20 to-transparent p-4 glow-orange hover:scale-[1.02] transition inline-block">
           <img src="img/gaming/Gaming-logo1.png" class="w-24 h-14 object-contain" alt="Gaming" />
-        </div>
+        </a>
+
         <div>
-          <h2 class="text-3xl sm:text-4xl font-black bg-gradient-to-r from-orange-400 to-pink-500 bg-clip-text text-transparent">
+          <h2
+            class="text-3xl sm:text-4xl font-black bg-gradient-to-r from-orange-400 to-pink-500 bg-clip-text text-transparent">
             Gaming Gear
           </h2>
           <p class="text-white/70 mt-1.5 text-sm sm:text-base">Level up with premium performance gear</p>
@@ -245,17 +275,20 @@
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <article class="group relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-orange-500/20 transition-all duration-300 shimmer">
-          <div class="absolute top-3 left-3 z-10 bg-gradient-to-r from-red-600 to-pink-600 text-white text-xs font-black px-3 py-1.5 rounded-full shadow-lg flex items-center gap-1">
+        <article
+          class="group relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-orange-500/20 transition-all duration-300 shimmer">
+          <div
+            class="absolute top-3 left-3 z-10 bg-gradient-to-r from-red-600 to-pink-600 text-white text-xs font-black px-3 py-1.5 rounded-full shadow-lg flex items-center gap-1">
             <i class="fa-solid fa-fire"></i>
             <span>SALE</span>
           </div>
-          
+
           <div class="relative bg-gradient-to-b from-white/10 to-transparent p-5">
             <img src="img/gaming/71RM5vVmMvL._AC_SL1500_.jpg" alt="Xbox Wireless Controller"
-                 class="h-48 w-full object-contain group-hover:scale-110 transition-transform duration-500" loading="lazy" />
+              class="h-48 w-full object-contain group-hover:scale-110 transition-transform duration-500"
+              loading="lazy" />
           </div>
-          
+
           <div class="p-5">
             <h3 class="font-bold text-lg text-white group-hover:text-orange-400 transition-colors">
               Xbox Wireless Controller
@@ -272,34 +305,39 @@
             </div>
 
             <p class="text-white/70 text-sm mt-3 clamp-2">
-              Modern design with sculpted surfaces and refined geometry for enhanced comfort during long gaming sessions.
+              Modern design with sculpted surfaces and refined geometry for enhanced comfort during long gaming
+              sessions.
             </p>
 
             <div class="mt-4 flex items-baseline gap-2">
-              <span class="text-2xl font-black bg-gradient-to-r from-orange-400 to-pink-500 bg-clip-text text-transparent">$9.99</span>
+              <span
+                class="text-2xl font-black bg-gradient-to-r from-orange-400 to-pink-500 bg-clip-text text-transparent">$9.99</span>
               <span class="text-sm text-white/40 line-through">$19.99</span>
             </div>
           </div>
-          
+
           <button data-add-to-cart
-                  class="w-full border-t border-white/10 bg-gradient-to-r from-orange-500 to-pink-600 text-white font-bold py-3.5 hover:from-orange-600 hover:to-pink-700 transition-all duration-300">
+            class="w-full border-t border-white/10 bg-gradient-to-r from-orange-500 to-pink-600 text-white font-bold py-3.5 hover:from-orange-600 hover:to-pink-700 transition-all duration-300">
             <span class="inline-flex items-center justify-center gap-2">
               <i class="fa-solid fa-cart-plus"></i>
               Add to Cart
             </span>
           </button>
         </article>
-        <article class="group relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-orange-500/20 transition-all duration-300 shimmer">
+
+        <article
+          class="group relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-orange-500/20 transition-all duration-300 shimmer">
           <div class="relative bg-gradient-to-b from-white/10 to-transparent p-5">
             <img src="img/gaming/71eSk-BVZzL._AC_SL1200_.jpg" alt="Gaming CPU"
-                 class="h-48 w-full object-contain group-hover:scale-110 transition-transform duration-500" loading="lazy" />
+              class="h-48 w-full object-contain group-hover:scale-110 transition-transform duration-500"
+              loading="lazy" />
           </div>
-          
+
           <div class="p-5">
             <h3 class="font-bold text-lg text-white group-hover:text-orange-400 transition-colors">
               Gaming CPU
             </h3>
-            
+
             <div class="flex items-center gap-2 mt-2">
               <div class="flex gap-0.5">
                 <i class="fa-solid fa-star star-fill text-sm"></i>
@@ -316,34 +354,39 @@
             </p>
 
             <div class="mt-4">
-              <span class="text-2xl font-black bg-gradient-to-r from-orange-400 to-pink-500 bg-clip-text text-transparent">$89.99</span>
+              <span
+                class="text-2xl font-black bg-gradient-to-r from-orange-400 to-pink-500 bg-clip-text text-transparent">$89.99</span>
             </div>
           </div>
-          
+
           <button data-add-to-cart
-                  class="w-full border-t border-white/10 bg-gradient-to-r from-orange-500 to-pink-600 text-white font-bold py-3.5 hover:from-orange-600 hover:to-pink-700 transition-all duration-300">
+            class="w-full border-t border-white/10 bg-gradient-to-r from-orange-500 to-pink-600 text-white font-bold py-3.5 hover:from-orange-600 hover:to-pink-700 transition-all duration-300">
             <span class="inline-flex items-center justify-center gap-2">
               <i class="fa-solid fa-cart-plus"></i>
               Add to Cart
             </span>
           </button>
         </article>
-        <article class="group relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-orange-500/20 transition-all duration-300 shimmer">
-          <div class="absolute top-3 left-3 z-10 bg-gradient-to-r from-red-600 to-pink-600 text-white text-xs font-black px-3 py-1.5 rounded-full shadow-lg flex items-center gap-1">
+
+        <article
+          class="group relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-orange-500/20 transition-all duration-300 shimmer">
+          <div
+            class="absolute top-3 left-3 z-10 bg-gradient-to-r from-red-600 to-pink-600 text-white text-xs font-black px-3 py-1.5 rounded-full shadow-lg flex items-center gap-1">
             <i class="fa-solid fa-fire"></i>
             <span>30% OFF</span>
           </div>
-          
+
           <div class="relative bg-gradient-to-b from-white/10 to-transparent p-5">
             <img src="img/gaming/61aNMxBfK6L._AC_SL1500_.jpg" alt="Gaming Keyboard"
-                 class="h-48 w-full object-contain group-hover:scale-110 transition-transform duration-500" loading="lazy" />
+              class="h-48 w-full object-contain group-hover:scale-110 transition-transform duration-500"
+              loading="lazy" />
           </div>
-          
+
           <div class="p-5">
             <h3 class="font-bold text-lg text-white group-hover:text-orange-400 transition-colors">
               Gaming Keyboard
             </h3>
-            
+
             <div class="flex items-center gap-2 mt-2">
               <div class="flex gap-0.5">
                 <i class="fa-solid fa-star star-fill text-sm"></i>
@@ -360,30 +403,34 @@
             </p>
 
             <div class="mt-4 flex items-baseline gap-2">
-              <span class="text-2xl font-black bg-gradient-to-r from-orange-400 to-pink-500 bg-clip-text text-transparent">$59.99</span>
+              <span
+                class="text-2xl font-black bg-gradient-to-r from-orange-400 to-pink-500 bg-clip-text text-transparent">$59.99</span>
               <span class="text-sm text-white/40 line-through">$85.99</span>
             </div>
           </div>
-          
+
           <button data-add-to-cart
-                  class="w-full border-t border-white/10 bg-gradient-to-r from-orange-500 to-pink-600 text-white font-bold py-3.5 hover:from-orange-600 hover:to-pink-700 transition-all duration-300">
+            class="w-full border-t border-white/10 bg-gradient-to-r from-orange-500 to-pink-600 text-white font-bold py-3.5 hover:from-orange-600 hover:to-pink-700 transition-all duration-300">
             <span class="inline-flex items-center justify-center gap-2">
               <i class="fa-solid fa-cart-plus"></i>
               Add to Cart
             </span>
           </button>
         </article>
-        <article class="group relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-orange-500/20 transition-all duration-300 shimmer">
+
+        <article
+          class="group relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-orange-500/20 transition-all duration-300 shimmer">
           <div class="relative bg-gradient-to-b from-white/10 to-transparent p-5">
             <img src="img/gaming/615KnbjRmTL._SL1500_.jpg" alt="Gaming Mouse"
-                 class="h-48 w-full object-contain group-hover:scale-110 transition-transform duration-500" loading="lazy" />
+              class="h-48 w-full object-contain group-hover:scale-110 transition-transform duration-500"
+              loading="lazy" />
           </div>
-          
+
           <div class="p-5">
             <h3 class="font-bold text-lg text-white group-hover:text-orange-400 transition-colors">
               Gaming Mouse
             </h3>
-            
+
             <div class="flex items-center gap-2 mt-2">
               <div class="flex gap-0.5">
                 <i class="fa-solid fa-star star-fill text-sm"></i>
@@ -400,12 +447,13 @@
             </p>
 
             <div class="mt-4">
-              <span class="text-2xl font-black bg-gradient-to-r from-orange-400 to-pink-500 bg-clip-text text-transparent">$59.99</span>
+              <span
+                class="text-2xl font-black bg-gradient-to-r from-orange-400 to-pink-500 bg-clip-text text-transparent">$59.99</span>
             </div>
           </div>
-          
+
           <button data-add-to-cart
-                  class="w-full border-t border-white/10 bg-gradient-to-r from-orange-500 to-pink-600 text-white font-bold py-3.5 hover:from-orange-600 hover:to-pink-700 transition-all duration-300">
+            class="w-full border-t border-white/10 bg-gradient-to-r from-orange-500 to-pink-600 text-white font-bold py-3.5 hover:from-orange-600 hover:to-pink-700 transition-all duration-300">
             <span class="inline-flex items-center justify-center gap-2">
               <i class="fa-solid fa-cart-plus"></i>
               Add to Cart
@@ -414,13 +462,18 @@
         </article>
       </div>
     </section>
+
     <section id="C2" class="scroll-mt-24 mx-auto max-w-7xl px-4 sm:px-6 lg:px-10 mt-20">
       <div class="flex items-center gap-5 mb-8">
-        <div class="relative rounded-2xl border border-pink-500/30 bg-gradient-to-br from-pink-500/20 to-transparent p-4 glow-pink">
+        <!-- CHANGED: heading image links to product page -->
+        <a href="product.html#C2"
+          class="relative rounded-2xl border border-pink-500/30 bg-gradient-to-br from-pink-500/20 to-transparent p-4 glow-pink hover:scale-[1.02] transition inline-block">
           <img src="img/watches/Watch logo.png" class="w-24 h-14 object-contain" alt="Watches" />
-        </div>
+        </a>
+
         <div>
-          <h2 class="text-3xl sm:text-4xl font-black bg-gradient-to-r from-pink-400 to-purple-500 bg-clip-text text-transparent">
+          <h2
+            class="text-3xl sm:text-4xl font-black bg-gradient-to-r from-pink-400 to-purple-500 bg-clip-text text-transparent">
             Luxury Watches
           </h2>
           <p class="text-white/70 mt-1.5 text-sm sm:text-base">Timeless elegance meets modern precision</p>
@@ -428,17 +481,19 @@
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <article class="group relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-pink-500/20 transition-all duration-300 shimmer">
+        <article
+          class="group relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-pink-500/20 transition-all duration-300 shimmer">
           <div class="relative bg-gradient-to-b from-white/10 to-transparent p-5">
             <img src="img/watches/watches2.jpg" alt="Luxury Watch"
-                 class="h-48 w-full object-contain group-hover:scale-110 transition-transform duration-500" loading="lazy" />
+              class="h-48 w-full object-contain group-hover:scale-110 transition-transform duration-500"
+              loading="lazy" />
           </div>
-          
+
           <div class="p-5">
             <h3 class="font-bold text-lg text-white group-hover:text-pink-400 transition-colors">
               Classic Elegance Watch
             </h3>
-            
+
             <div class="flex items-center gap-2 mt-2">
               <div class="flex gap-0.5">
                 <i class="fa-solid fa-star star-fill text-sm"></i>
@@ -455,34 +510,39 @@
             </p>
 
             <div class="mt-4">
-              <span class="text-2xl font-black bg-gradient-to-r from-pink-400 to-purple-500 bg-clip-text text-transparent">$449.99</span>
+              <span
+                class="text-2xl font-black bg-gradient-to-r from-pink-400 to-purple-500 bg-clip-text text-transparent">$449.99</span>
             </div>
           </div>
-          
+
           <button data-add-to-cart
-                  class="w-full border-t border-white/10 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold py-3.5 hover:from-pink-600 hover:to-purple-700 transition-all duration-300">
+            class="w-full border-t border-white/10 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold py-3.5 hover:from-pink-600 hover:to-purple-700 transition-all duration-300">
             <span class="inline-flex items-center justify-center gap-2">
               <i class="fa-solid fa-cart-plus"></i>
               Add to Cart
             </span>
           </button>
         </article>
-        <article class="group relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-pink-500/20 transition-all duration-300 shimmer">
-          <div class="absolute top-3 left-3 z-10 bg-gradient-to-r from-red-600 to-pink-600 text-white text-xs font-black px-3 py-1.5 rounded-full shadow-lg flex items-center gap-1">
+
+        <article
+          class="group relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-pink-500/20 transition-all duration-300 shimmer">
+          <div
+            class="absolute top-3 left-3 z-10 bg-gradient-to-r from-red-600 to-pink-600 text-white text-xs font-black px-3 py-1.5 rounded-full shadow-lg flex items-center gap-1">
             <i class="fa-solid fa-tag"></i>
             <span>HOT DEAL</span>
           </div>
-          
+
           <div class="relative bg-gradient-to-b from-white/10 to-transparent p-5">
             <img src="img/watches/watches3.jpg" alt="Sports Watch"
-                 class="h-48 w-full object-contain group-hover:scale-110 transition-transform duration-500" loading="lazy" />
+              class="h-48 w-full object-contain group-hover:scale-110 transition-transform duration-500"
+              loading="lazy" />
           </div>
-          
+
           <div class="p-5">
             <h3 class="font-bold text-lg text-white group-hover:text-pink-400 transition-colors">
               Modern Sport Watch
             </h3>
-            
+
             <div class="flex items-center gap-2 mt-2">
               <div class="flex gap-0.5">
                 <i class="fa-solid fa-star star-fill text-sm"></i>
@@ -499,13 +559,14 @@
             </p>
 
             <div class="mt-4 flex items-baseline gap-2">
-              <span class="text-2xl font-black bg-gradient-to-r from-pink-400 to-purple-500 bg-clip-text text-transparent">$339.99</span>
+              <span
+                class="text-2xl font-black bg-gradient-to-r from-pink-400 to-purple-500 bg-clip-text text-transparent">$339.99</span>
               <span class="text-sm text-white/40 line-through">$459.99</span>
             </div>
           </div>
-          
+
           <button data-add-to-cart
-                  class="w-full border-t border-white/10 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold py-3.5 hover:from-pink-600 hover:to-purple-700 transition-all duration-300">
+            class="w-full border-t border-white/10 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold py-3.5 hover:from-pink-600 hover:to-purple-700 transition-all duration-300">
             <span class="inline-flex items-center justify-center gap-2">
               <i class="fa-solid fa-cart-plus"></i>
               Add to Cart
@@ -513,17 +574,19 @@
           </button>
         </article>
 
-        <article class="group relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-pink-500/20 transition-all duration-300 shimmer">
+        <article
+          class="group relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-pink-500/20 transition-all duration-300 shimmer">
           <div class="relative bg-gradient-to-b from-white/10 to-transparent p-5">
             <img src="img/watches/watches4.jpg" alt="Minimalist Watch"
-                 class="h-48 w-full object-contain group-hover:scale-110 transition-transform duration-500" loading="lazy" />
+              class="h-48 w-full object-contain group-hover:scale-110 transition-transform duration-500"
+              loading="lazy" />
           </div>
-          
+
           <div class="p-5">
             <h3 class="font-bold text-lg text-white group-hover:text-pink-400 transition-colors">
               Minimalist Premium
             </h3>
-            
+
             <div class="flex items-center gap-2 mt-2">
               <div class="flex gap-0.5">
                 <i class="fa-solid fa-star star-fill text-sm"></i>
@@ -540,12 +603,13 @@
             </p>
 
             <div class="mt-4">
-              <span class="text-2xl font-black bg-gradient-to-r from-pink-400 to-purple-500 bg-clip-text text-transparent">$399.99</span>
+              <span
+                class="text-2xl font-black bg-gradient-to-r from-pink-400 to-purple-500 bg-clip-text text-transparent">$399.99</span>
             </div>
           </div>
-          
+
           <button data-add-to-cart
-                  class="w-full border-t border-white/10 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold py-3.5 hover:from-pink-600 hover:to-purple-700 transition-all duration-300">
+            class="w-full border-t border-white/10 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold py-3.5 hover:from-pink-600 hover:to-purple-700 transition-all duration-300">
             <span class="inline-flex items-center justify-center gap-2">
               <i class="fa-solid fa-cart-plus"></i>
               Add to Cart
@@ -553,17 +617,19 @@
           </button>
         </article>
 
-        <article class="group relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-pink-500/20 transition-all duration-300 shimmer">
+        <article
+          class="group relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-pink-500/20 transition-all duration-300 shimmer">
           <div class="relative bg-gradient-to-b from-white/10 to-transparent p-5">
             <img src="img/watches/watches_.jpg" alt="Rolex Watch"
-                 class="h-48 w-full object-contain group-hover:scale-110 transition-transform duration-500" loading="lazy" />
+              class="h-48 w-full object-contain group-hover:scale-110 transition-transform duration-500"
+              loading="lazy" />
           </div>
-          
+
           <div class="p-5">
             <h3 class="font-bold text-lg text-white group-hover:text-pink-400 transition-colors">
               Rolex Prestige
             </h3>
-            
+
             <div class="flex items-center gap-2 mt-2">
               <div class="flex gap-0.5">
                 <i class="fa-solid fa-star star-fill text-sm"></i>
@@ -580,12 +646,13 @@
             </p>
 
             <div class="mt-4">
-              <span class="text-2xl font-black bg-gradient-to-r from-pink-400 to-purple-500 bg-clip-text text-transparent">$499.99</span>
+              <span
+                class="text-2xl font-black bg-gradient-to-r from-pink-400 to-purple-500 bg-clip-text text-transparent">$499.99</span>
             </div>
           </div>
-          
+
           <button data-add-to-cart
-                  class="w-full border-t border-white/10 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold py-3.5 hover:from-pink-600 hover:to-purple-700 transition-all duration-300">
+            class="w-full border-t border-white/10 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold py-3.5 hover:from-pink-600 hover:to-purple-700 transition-all duration-300">
             <span class="inline-flex items-center justify-center gap-2">
               <i class="fa-solid fa-cart-plus"></i>
               Add to Cart
@@ -597,11 +664,15 @@
 
     <section id="C3" class="scroll-mt-24 mx-auto max-w-7xl px-4 sm:px-6 lg:px-10 mt-20">
       <div class="flex items-center gap-5 mb-8">
-        <div class="relative rounded-2xl border border-blue-500/30 bg-gradient-to-br from-blue-500/20 to-transparent p-4">
+        <!-- CHANGED: heading image links to product page -->
+        <a href="product.html#C3"
+          class="relative rounded-2xl border border-blue-500/30 bg-gradient-to-br from-blue-500/20 to-transparent p-4 hover:scale-[1.02] transition inline-block">
           <img src="img/T-Shirts/T-Shirts-logo.png" class="w-24 h-14 object-contain" alt="T-Shirts" />
-        </div>
+        </a>
+
         <div>
-          <h2 class="text-3xl sm:text-4xl font-black bg-gradient-to-r from-blue-400 to-cyan-500 bg-clip-text text-transparent">
+          <h2
+            class="text-3xl sm:text-4xl font-black bg-gradient-to-r from-blue-400 to-cyan-500 bg-clip-text text-transparent">
             Premium T-Shirts
           </h2>
           <p class="text-white/70 mt-1.5 text-sm sm:text-base">Soft cotton, clean fit, everyday comfort</p>
@@ -609,22 +680,25 @@
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <article class="group relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-300 shimmer">
-          <div class="absolute top-3 left-3 z-10 bg-gradient-to-r from-red-600 to-orange-600 text-white text-xs font-black px-3 py-1.5 rounded-full shadow-lg flex items-center gap-1">
+        <article
+          class="group relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-300 shimmer">
+          <div
+            class="absolute top-3 left-3 z-10 bg-gradient-to-r from-red-600 to-orange-600 text-white text-xs font-black px-3 py-1.5 rounded-full shadow-lg flex items-center gap-1">
             <i class="fa-solid fa-fire"></i>
             <span>50% OFF</span>
           </div>
-          
+
           <div class="relative bg-gradient-to-b from-white/10 to-transparent p-5">
             <img src="img/T-Shirts/T-Shirt1.jpg" alt="T-Shirt"
-                 class="h-48 w-full object-contain group-hover:scale-110 transition-transform duration-500" loading="lazy" />
+              class="h-48 w-full object-contain group-hover:scale-110 transition-transform duration-500"
+              loading="lazy" />
           </div>
-          
+
           <div class="p-5">
             <h3 class="font-bold text-lg text-white group-hover:text-blue-400 transition-colors">
               Classic Cotton Tee
             </h3>
-            
+
             <div class="flex items-center gap-2 mt-2">
               <div class="flex gap-0.5">
                 <i class="fa-solid fa-star star-fill text-sm"></i>
@@ -641,30 +715,34 @@
             </p>
 
             <div class="mt-4 flex items-baseline gap-2">
-              <span class="text-2xl font-black bg-gradient-to-r from-blue-400 to-cyan-500 bg-clip-text text-transparent">$9.99</span>
+              <span
+                class="text-2xl font-black bg-gradient-to-r from-blue-400 to-cyan-500 bg-clip-text text-transparent">$9.99</span>
               <span class="text-sm text-white/40 line-through">$19.99</span>
             </div>
           </div>
-          
+
           <button data-add-to-cart
-                  class="w-full border-t border-white/10 bg-gradient-to-r from-blue-500 to-cyan-600 text-white font-bold py-3.5 hover:from-blue-600 hover:to-cyan-700 transition-all duration-300">
+            class="w-full border-t border-white/10 bg-gradient-to-r from-blue-500 to-cyan-600 text-white font-bold py-3.5 hover:from-blue-600 hover:to-cyan-700 transition-all duration-300">
             <span class="inline-flex items-center justify-center gap-2">
               <i class="fa-solid fa-cart-plus"></i>
               Add to Cart
             </span>
           </button>
         </article>
-        <article class="group relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-300 shimmer">
+
+        <article
+          class="group relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-300 shimmer">
           <div class="relative bg-gradient-to-b from-white/10 to-transparent p-5">
             <img src="img/T-Shirts/T-Shirt2.jpg" alt="T-Shirt"
-                 class="h-48 w-full object-contain group-hover:scale-110 transition-transform duration-500" loading="lazy" />
+              class="h-48 w-full object-contain group-hover:scale-110 transition-transform duration-500"
+              loading="lazy" />
           </div>
-          
+
           <div class="p-5">
             <h3 class="font-bold text-lg text-white group-hover:text-blue-400 transition-colors">
               Street Style Tee
             </h3>
-            
+
             <div class="flex items-center gap-2 mt-2">
               <div class="flex gap-0.5">
                 <i class="fa-solid fa-star star-fill text-sm"></i>
@@ -681,12 +759,13 @@
             </p>
 
             <div class="mt-4">
-              <span class="text-2xl font-black bg-gradient-to-r from-blue-400 to-cyan-500 bg-clip-text text-transparent">$10.99</span>
+              <span
+                class="text-2xl font-black bg-gradient-to-r from-blue-400 to-cyan-500 bg-clip-text text-transparent">$10.99</span>
             </div>
           </div>
-          
+
           <button data-add-to-cart
-                  class="w-full border-t border-white/10 bg-gradient-to-r from-blue-500 to-cyan-600 text-white font-bold py-3.5 hover:from-blue-600 hover:to-cyan-700 transition-all duration-300">
+            class="w-full border-t border-white/10 bg-gradient-to-r from-blue-500 to-cyan-600 text-white font-bold py-3.5 hover:from-blue-600 hover:to-cyan-700 transition-all duration-300">
             <span class="inline-flex items-center justify-center gap-2">
               <i class="fa-solid fa-cart-plus"></i>
               Add to Cart
@@ -694,22 +773,25 @@
           </button>
         </article>
 
-        <article class="group relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-300 shimmer">
-          <div class="absolute top-3 left-3 z-10 bg-gradient-to-r from-green-600 to-emerald-600 text-white text-xs font-black px-3 py-1.5 rounded-full shadow-lg flex items-center gap-1">
+        <article
+          class="group relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-300 shimmer">
+          <div
+            class="absolute top-3 left-3 z-10 bg-gradient-to-r from-green-600 to-emerald-600 text-white text-xs font-black px-3 py-1.5 rounded-full shadow-lg flex items-center gap-1">
             <i class="fa-solid fa-bolt"></i>
             <span>CLEARANCE</span>
           </div>
-          
+
           <div class="relative bg-gradient-to-b from-white/10 to-transparent p-5">
             <img src="img/T-Shirts/T-shirt3.jpg" alt="T-Shirt"
-                 class="h-48 w-full object-contain group-hover:scale-110 transition-transform duration-500" loading="lazy" />
+              class="h-48 w-full object-contain group-hover:scale-110 transition-transform duration-500"
+              loading="lazy" />
           </div>
-          
+
           <div class="p-5">
             <h3 class="font-bold text-lg text-white group-hover:text-blue-400 transition-colors">
               Essential Crew Neck
             </h3>
-            
+
             <div class="flex items-center gap-2 mt-2">
               <div class="flex gap-0.5">
                 <i class="fa-solid fa-star star-fill text-sm"></i>
@@ -726,30 +808,34 @@
             </p>
 
             <div class="mt-4 flex items-baseline gap-2">
-              <span class="text-2xl font-black bg-gradient-to-r from-blue-400 to-cyan-500 bg-clip-text text-transparent">$7.99</span>
+              <span
+                class="text-2xl font-black bg-gradient-to-r from-blue-400 to-cyan-500 bg-clip-text text-transparent">$7.99</span>
               <span class="text-sm text-white/40 line-through">$14.99</span>
             </div>
           </div>
-          
+
           <button data-add-to-cart
-                  class="w-full border-t border-white/10 bg-gradient-to-r from-blue-500 to-cyan-600 text-white font-bold py-3.5 hover:from-blue-600 hover:to-cyan-700 transition-all duration-300">
+            class="w-full border-t border-white/10 bg-gradient-to-r from-blue-500 to-cyan-600 text-white font-bold py-3.5 hover:from-blue-600 hover:to-cyan-700 transition-all duration-300">
             <span class="inline-flex items-center justify-center gap-2">
               <i class="fa-solid fa-cart-plus"></i>
               Add to Cart
             </span>
           </button>
         </article>
-        <article class="group relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-300 shimmer">
+
+        <article
+          class="group relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-300 shimmer">
           <div class="relative bg-gradient-to-b from-white/10 to-transparent p-5">
             <img src="img/T-Shirts/T-shirt4.jpg" alt="T-Shirt"
-                 class="h-48 w-full object-contain group-hover:scale-110 transition-transform duration-500" loading="lazy" />
+              class="h-48 w-full object-contain group-hover:scale-110 transition-transform duration-500"
+              loading="lazy" />
           </div>
-          
+
           <div class="p-5">
             <h3 class="font-bold text-lg text-white group-hover:text-blue-400 transition-colors">
               Premium Fit Tee
             </h3>
-            
+
             <div class="flex items-center gap-2 mt-2">
               <div class="flex gap-0.5">
                 <i class="fa-solid fa-star star-fill text-sm"></i>
@@ -766,12 +852,13 @@
             </p>
 
             <div class="mt-4">
-              <span class="text-2xl font-black bg-gradient-to-r from-blue-400 to-cyan-500 bg-clip-text text-transparent">$12.99</span>
+              <span
+                class="text-2xl font-black bg-gradient-to-r from-blue-400 to-cyan-500 bg-clip-text text-transparent">$12.99</span>
             </div>
           </div>
-          
+
           <button data-add-to-cart
-                  class="w-full border-t border-white/10 bg-gradient-to-r from-blue-500 to-cyan-600 text-white font-bold py-3.5 hover:from-blue-600 hover:to-cyan-700 transition-all duration-300">
+            class="w-full border-t border-white/10 bg-gradient-to-r from-blue-500 to-cyan-600 text-white font-bold py-3.5 hover:from-blue-600 hover:to-cyan-700 transition-all duration-300">
             <span class="inline-flex items-center justify-center gap-2">
               <i class="fa-solid fa-cart-plus"></i>
               Add to Cart
@@ -780,13 +867,18 @@
         </article>
       </div>
     </section>
+
     <section id="C4" class="scroll-mt-24 mx-auto max-w-7xl px-4 sm:px-6 lg:px-10 mt-20 mb-20">
       <div class="flex items-center gap-5 mb-8">
-        <div class="relative rounded-2xl border border-purple-500/30 bg-gradient-to-br from-purple-500/20 to-transparent p-4">
+        <!-- CHANGED: heading image links to product page -->
+        <a href="product.html#C4"
+          class="relative rounded-2xl border border-purple-500/30 bg-gradient-to-br from-purple-500/20 to-transparent p-4 hover:scale-[1.02] transition inline-block">
           <img src="img/Mobiles and Tabs/Mobiles and Tabs logo.png" class="w-24 h-14 object-contain" alt="Tech" />
-        </div>
+        </a>
+
         <div>
-          <h2 class="text-3xl sm:text-4xl font-black bg-gradient-to-r from-purple-400 to-indigo-500 bg-clip-text text-transparent">
+          <h2
+            class="text-3xl sm:text-4xl font-black bg-gradient-to-r from-purple-400 to-indigo-500 bg-clip-text text-transparent">
             Mobiles & Tablets
           </h2>
           <p class="text-white/70 mt-1.5 text-sm sm:text-base">Cutting-edge tech with sleek design</p>
@@ -794,18 +886,19 @@
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-
-        <article class="group relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-300 shimmer">
+        <article
+          class="group relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-300 shimmer">
           <div class="relative bg-gradient-to-b from-white/10 to-transparent p-5">
             <img src="img/Mobiles and Tabs/Mobile1.jpg" alt="Mobile"
-                 class="h-48 w-full object-contain group-hover:scale-110 transition-transform duration-500" loading="lazy" />
+              class="h-48 w-full object-contain group-hover:scale-110 transition-transform duration-500"
+              loading="lazy" />
           </div>
-          
+
           <div class="p-5">
             <h3 class="font-bold text-lg text-white group-hover:text-purple-400 transition-colors">
               Pro X Smartphone
             </h3>
-            
+
             <div class="flex items-center gap-2 mt-2">
               <div class="flex gap-0.5">
                 <i class="fa-solid fa-star star-fill text-sm"></i>
@@ -822,12 +915,13 @@
             </p>
 
             <div class="mt-4">
-              <span class="text-2xl font-black bg-gradient-to-r from-purple-400 to-indigo-500 bg-clip-text text-transparent">$299.99</span>
+              <span
+                class="text-2xl font-black bg-gradient-to-r from-purple-400 to-indigo-500 bg-clip-text text-transparent">$299.99</span>
             </div>
           </div>
-          
+
           <button data-add-to-cart
-                  class="w-full border-t border-white/10 bg-gradient-to-r from-purple-500 to-indigo-600 text-white font-bold py-3.5 hover:from-purple-600 hover:to-indigo-700 transition-all duration-300">
+            class="w-full border-t border-white/10 bg-gradient-to-r from-purple-500 to-indigo-600 text-white font-bold py-3.5 hover:from-purple-600 hover:to-indigo-700 transition-all duration-300">
             <span class="inline-flex items-center justify-center gap-2">
               <i class="fa-solid fa-cart-plus"></i>
               Add to Cart
@@ -835,22 +929,25 @@
           </button>
         </article>
 
-        <article class="group relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-300 shimmer">
-          <div class="absolute top-3 left-3 z-10 bg-gradient-to-r from-red-600 to-pink-600 text-white text-xs font-black px-3 py-1.5 rounded-full shadow-lg flex items-center gap-1">
+        <article
+          class="group relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-300 shimmer">
+          <div
+            class="absolute top-3 left-3 z-10 bg-gradient-to-r from-red-600 to-pink-600 text-white text-xs font-black px-3 py-1.5 rounded-full shadow-lg flex items-center gap-1">
             <i class="fa-solid fa-percent"></i>
             <span>15% OFF</span>
           </div>
-          
+
           <div class="relative bg-gradient-to-b from-white/10 to-transparent p-5">
             <img src="img/Mobiles and Tabs/Mobile2.jpg" alt="Mobile"
-                 class="h-48 w-full object-contain group-hover:scale-110 transition-transform duration-500" loading="lazy" />
+              class="h-48 w-full object-contain group-hover:scale-110 transition-transform duration-500"
+              loading="lazy" />
           </div>
-          
+
           <div class="p-5">
             <h3 class="font-bold text-lg text-white group-hover:text-purple-400 transition-colors">
               Ultra Max Phone
             </h3>
-            
+
             <div class="flex items-center gap-2 mt-2">
               <div class="flex gap-0.5">
                 <i class="fa-solid fa-star star-fill text-sm"></i>
@@ -867,30 +964,34 @@
             </p>
 
             <div class="mt-4 flex items-baseline gap-2">
-              <span class="text-2xl font-black bg-gradient-to-r from-purple-400 to-indigo-500 bg-clip-text text-transparent">$259.99</span>
+              <span
+                class="text-2xl font-black bg-gradient-to-r from-purple-400 to-indigo-500 bg-clip-text text-transparent">$259.99</span>
               <span class="text-sm text-white/40 line-through">$305.99</span>
             </div>
           </div>
-          
+
           <button data-add-to-cart
-                  class="w-full border-t border-white/10 bg-gradient-to-r from-purple-500 to-indigo-600 text-white font-bold py-3.5 hover:from-purple-600 hover:to-indigo-700 transition-all duration-300">
+            class="w-full border-t border-white/10 bg-gradient-to-r from-purple-500 to-indigo-600 text-white font-bold py-3.5 hover:from-purple-600 hover:to-indigo-700 transition-all duration-300">
             <span class="inline-flex items-center justify-center gap-2">
               <i class="fa-solid fa-cart-plus"></i>
               Add to Cart
             </span>
           </button>
         </article>
-        <article class="group relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-300 shimmer">
+
+        <article
+          class="group relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-300 shimmer">
           <div class="relative bg-gradient-to-b from-white/10 to-transparent p-5">
             <img src="img/Mobiles and Tabs/Tablet1.jpg" alt="Tablet"
-                 class="h-48 w-full object-contain group-hover:scale-110 transition-transform duration-500" loading="lazy" />
+              class="h-48 w-full object-contain group-hover:scale-110 transition-transform duration-500"
+              loading="lazy" />
           </div>
-          
+
           <div class="p-5">
             <h3 class="font-bold text-lg text-white group-hover:text-purple-400 transition-colors">
               Creator Tablet Pro
             </h3>
-            
+
             <div class="flex items-center gap-2 mt-2">
               <div class="flex gap-0.5">
                 <i class="fa-solid fa-star star-fill text-sm"></i>
@@ -907,12 +1008,13 @@
             </p>
 
             <div class="mt-4">
-              <span class="text-2xl font-black bg-gradient-to-r from-purple-400 to-indigo-500 bg-clip-text text-transparent">$199.99</span>
+              <span
+                class="text-2xl font-black bg-gradient-to-r from-purple-400 to-indigo-500 bg-clip-text text-transparent">$199.99</span>
             </div>
           </div>
-          
+
           <button data-add-to-cart
-                  class="w-full border-t border-white/10 bg-gradient-to-r from-purple-500 to-indigo-600 text-white font-bold py-3.5 hover:from-purple-600 hover:to-indigo-700 transition-all duration-300">
+            class="w-full border-t border-white/10 bg-gradient-to-r from-purple-500 to-indigo-600 text-white font-bold py-3.5 hover:from-purple-600 hover:to-indigo-700 transition-all duration-300">
             <span class="inline-flex items-center justify-center gap-2">
               <i class="fa-solid fa-cart-plus"></i>
               Add to Cart
@@ -920,17 +1022,19 @@
           </button>
         </article>
 
-        <article class="group relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-300 shimmer">
+        <article
+          class="group relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-300 shimmer">
           <div class="relative bg-gradient-to-b from-white/10 to-transparent p-5">
             <img src="img/Mobiles and Tabs/Tablet2.jpg" alt="Tablet"
-                 class="h-48 w-full object-contain group-hover:scale-110 transition-transform duration-500" loading="lazy" />
+              class="h-48 w-full object-contain group-hover:scale-110 transition-transform duration-500"
+              loading="lazy" />
           </div>
-          
+
           <div class="p-5">
             <h3 class="font-bold text-lg text-white group-hover:text-purple-400 transition-colors">
               Compact Tablet Lite
             </h3>
-            
+
             <div class="flex items-center gap-2 mt-2">
               <div class="flex gap-0.5">
                 <i class="fa-solid fa-star star-fill text-sm"></i>
@@ -947,12 +1051,13 @@
             </p>
 
             <div class="mt-4">
-              <span class="text-2xl font-black bg-gradient-to-r from-purple-400 to-indigo-500 bg-clip-text text-transparent">$179.99</span>
+              <span
+                class="text-2xl font-black bg-gradient-to-r from-purple-400 to-indigo-500 bg-clip-text text-transparent">$179.99</span>
             </div>
           </div>
-          
+
           <button data-add-to-cart
-                  class="w-full border-t border-white/10 bg-gradient-to-r from-purple-500 to-indigo-600 text-white font-bold py-3.5 hover:from-purple-600 hover:to-indigo-700 transition-all duration-300">
+            class="w-full border-t border-white/10 bg-gradient-to-r from-purple-500 to-indigo-600 text-white font-bold py-3.5 hover:from-purple-600 hover:to-indigo-700 transition-all duration-300">
             <span class="inline-flex items-center justify-center gap-2">
               <i class="fa-solid fa-cart-plus"></i>
               Add to Cart
@@ -966,30 +1071,35 @@
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10 py-12">
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
           <div>
-            <div class="font-bold text-xl bg-gradient-to-r from-orange-400 to-pink-500 bg-clip-text text-transparent mb-2">
+            <div
+              class="font-bold text-xl bg-gradient-to-r from-orange-400 to-pink-500 bg-clip-text text-transparent mb-2">
               LUST
             </div>
             <p class="text-white/60 text-sm">Premium products, unbeatable prices. Your satisfaction is our priority.</p>
             <div class="flex gap-3 mt-4">
-              <a href="#" class="w-9 h-9 rounded-full border border-white/20 bg-white/5 hover:bg-white/10 transition grid place-items-center">
+              <a href="#"
+                class="w-9 h-9 rounded-full border border-white/20 bg-white/5 hover:bg-white/10 transition grid place-items-center">
                 <i class="fa-brands fa-facebook-f text-sm"></i>
               </a>
-              <a href="#" class="w-9 h-9 rounded-full border border-white/20 bg-white/5 hover:bg-white/10 transition grid place-items-center">
+              <a href="#"
+                class="w-9 h-9 rounded-full border border-white/20 bg-white/5 hover:bg-white/10 transition grid place-items-center">
                 <i class="fa-brands fa-instagram text-sm"></i>
               </a>
-              <a href="#" class="w-9 h-9 rounded-full border border-white/20 bg-white/5 hover:bg-white/10 transition grid place-items-center">
+              <a href="#"
+                class="w-9 h-9 rounded-full border border-white/20 bg-white/5 hover:bg-white/10 transition grid place-items-center">
                 <i class="fa-brands fa-twitter text-sm"></i>
               </a>
             </div>
           </div>
-          
+
           <div>
             <div class="font-semibold text-white mb-3">Quick Links</div>
             <ul class="space-y-2 text-sm text-white/60">
-              <li><a href="#C1" class="hover:text-white transition">Gaming</a></li>
-              <li><a href="#C2" class="hover:text-white transition">Watches</a></li>
-              <li><a href="#C3" class="hover:text-white transition">T-Shirts</a></li>
-              <li><a href="#C4" class="hover:text-white transition">Tech</a></li>
+              <!-- CHANGED: go to product page -->
+              <li><a href="product.html#C1" class="hover:text-white transition">Gaming</a></li>
+              <li><a href="product.html#C2" class="hover:text-white transition">Watches</a></li>
+              <li><a href="product.html#C3" class="hover:text-white transition">T-Shirts</a></li>
+              <li><a href="product.html#C4" class="hover:text-white transition">Tech</a></li>
             </ul>
           </div>
 
@@ -1004,7 +1114,8 @@
           </div>
         </div>
 
-        <div class="border-t border-white/10 mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-white/50 text-sm">
+        <div
+          class="border-t border-white/10 mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-white/50 text-sm">
           <div>© <span id="year"></span> Lust Store. All rights reserved.</div>
           <div class="flex gap-4">
             <a href="#" class="hover:text-white transition">Privacy Policy</a>
@@ -1015,23 +1126,27 @@
     </footer>
   </main>
 
+  <!-- Toast -->
   <div id="toast"
-       class="fixed bottom-6 right-6 z-50 hidden rounded-2xl border border-white/20 bg-gradient-to-br from-gray-900 to-black backdrop-blur-xl px-5 py-4 shadow-2xl glow-orange min-w-[280px]">
+    class="fixed bottom-6 right-6 z-50 hidden rounded-2xl border border-white/20 bg-gradient-to-br from-gray-900 to-black backdrop-blur-xl px-5 py-4 shadow-2xl glow-orange min-w-[280px]">
     <div class="flex items-center gap-4">
-      <div class="h-12 w-12 rounded-xl bg-gradient-to-br from-orange-500 to-pink-600 text-white grid place-items-center shadow-lg">
+      <div
+        class="h-12 w-12 rounded-xl bg-gradient-to-br from-orange-500 to-pink-600 text-white grid place-items-center shadow-lg">
         <i class="fa-solid fa-check text-lg"></i>
       </div>
       <div class="flex-1">
         <div class="font-bold text-white">Added to cart!</div>
         <div class="text-sm text-white/70 mt-0.5">Item successfully added</div>
       </div>
-      <button onclick="document.getElementById('toast').classList.add('hidden')" 
-              class="text-white/50 hover:text-white transition">
+      <button onclick="document.getElementById('toast').classList.add('hidden')"
+        class="text-white/50 hover:text-white transition">
         <i class="fa-solid fa-times"></i>
       </button>
     </div>
   </div>
 
+  <!-- Home JS (cart count + toast + year) -->
   <script src="script.js"></script>
 </body>
+
 </html>

@@ -22,7 +22,6 @@
       if (cartCountEl) cartCountEl.textContent = String(count);
       showToast();
       
-      // Add pulse animation to cart badge
       cartCountEl?.classList.add('animate-pulse');
       setTimeout(() => cartCountEl?.classList.remove('animate-pulse'), 600);
     });

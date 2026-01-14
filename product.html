@@ -19,12 +19,7 @@
                   #030712;
     }
 
-    .clamp-2 {
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
+    
 
     .glow-orange {
       box-shadow: 0 0 30px rgba(249, 115, 22, 0.3), 0 0 60px rgba(249, 115, 22, 0.15);
@@ -100,7 +95,6 @@
   }
   .toggle-fancy--purple:hover{ box-shadow: 0 22px 70px rgba(79,70,229,.25); }
 
-  /* Modal animation */
   .modal-card{
     background:
       radial-gradient(1200px 600px at 10% 0%, rgba(249,115,22,.14), transparent 50%),
@@ -141,7 +135,6 @@
     100%{ background-position: 100% 50%; }
   }
 
-  /* Watches theme button */
   .toggle-fancy--pink{
     background: linear-gradient(90deg, #ec4899, #a855f7, #f43f5e);
     box-shadow: 0 18px 60px rgba(236,72,153,.18);
@@ -150,7 +143,6 @@
     box-shadow: 0 22px 70px rgba(236,72,153,.28);
   }
 
-  /* Modal animation */
   .modal-card{
     background:
       radial-gradient(1200px 600px at 10% 0%, rgba(236,72,153,.16), transparent 50%),
@@ -168,7 +160,7 @@
 </head>
 
 <body class="text-white">
-    <!-- Navbar (same as home) -->
+  
     <header class="sticky top-0 z-50 bg-slate-950/80 backdrop-blur-xl border-b border-white/10 shadow-lg">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
             <nav class="flex items-center justify-between py-4">
@@ -190,7 +182,6 @@
                             class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-orange-500 to-pink-500 group-hover:w-full transition-all duration-300"></span>
                     </a>
 
-                    <!-- Active Products -->
                     <a href="product.html" class="relative text-white hover:text-white transition font-semibold group">
                         <span>Products</span>
                         <span
@@ -216,7 +207,7 @@
     </header>
 
     <main>
-        <!-- Search bar under navbar -->
+    
         <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10 pt-7">
             <div class="rounded-3xl border border-white/10 bg-slate-900/40 backdrop-blur-sm shadow-2xl overflow-hidden">
                 <div class="p-6 sm:p-8">
@@ -282,7 +273,6 @@
             </div>
         </section>
 
-        <!-- C1 Gaming -->
     <section id="C1" class="scroll-mt-24 mx-auto max-w-7xl px-4 sm:px-6 lg:px-10 mt-14">
   <div class="flex items-center gap-5 mb-8">
     <div
@@ -298,9 +288,8 @@
     </div>
   </div>
 
-  <!-- ROW 1 -->
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 my-13">
-    <!-- 1 -->
+   
     <article data-product-card data-search="xbox wireless controller gaming controllers modern design comfort"
       class="group relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-orange-500/20 transition-all duration-300 shimmer cursor-pointer">
       <div
@@ -335,7 +324,6 @@
       </button>
     </article>
 
-    <!-- 2 -->
     <article data-product-card data-search="gaming cpu pc performance 4k cooling"
       class="group relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-orange-500/20 transition-all duration-300 shimmer cursor-pointer">
       <div class="relative bg-gradient-to-b from-white/10 to-transparent p-5">
@@ -365,7 +353,6 @@
       </button>
     </article>
 
-    <!-- 3 -->
     <article data-product-card data-search="gaming keyboard mechanical rgb switches"
       class="group relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-orange-500/20 transition-all duration-300 shimmer cursor-pointer">
       <div
@@ -400,7 +387,6 @@
       </button>
     </article>
 
-    <!-- 4 -->
     <article data-product-card data-search="gaming mouse ergonomic rgb precise tracking"
       class="group relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-orange-500/20 transition-all duration-300 shimmer cursor-pointer">
       <div class="relative bg-gradient-to-b from-white/10 to-transparent p-5">
@@ -431,12 +417,10 @@
     </article>
   </div>
 
-  <!-- Hidden Products Container -->
   <div id="container-card" class="hidden">
 
-    <!-- ROW 2 -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      <!-- 1 -->
+    
       <article data-product-card data-search="gaming mouse wireless ultra light rgb"
         class="group relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-orange-500/20 transition-all duration-300 shimmer cursor-pointer">
         <div class="relative bg-gradient-to-b from-white/10 to-transparent p-5">
@@ -466,7 +450,7 @@
         </button>
       </article>
 
-      <!-- 2 -->
+      
       <article data-product-card data-search="xbox controller pro grip rechargeable"
         class="group relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-orange-500/20 transition-all duration-300 shimmer cursor-pointer">
         <div
@@ -501,7 +485,6 @@
         </button>
       </article>
 
-      <!-- 3 -->
       <article data-product-card data-search="mousepad extended rgb desk mat"
         class="group relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-orange-500/20 transition-all duration-300 shimmer cursor-pointer">
         <div
@@ -536,7 +519,7 @@
         </button>
       </article>
 
-      <!-- 4 -->
+ 
       <article data-product-card data-search="gaming headset surround mic noise cancel"
         class="group relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-orange-500/20 transition-all duration-300 shimmer cursor-pointer">
         <div class="relative bg-gradient-to-b from-white/10 to-transparent p-5">
@@ -567,9 +550,9 @@
       </article>
     </div>
 
-    <!-- ROW 3 -->
+
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 my-11">
-      <!-- 1 -->
+     
       <article data-product-card data-search="gaming chair ergonomic lumbar"
         class="group relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-orange-500/20 transition-all duration-300 shimmer cursor-pointer">
         <div
@@ -604,7 +587,6 @@
         </button>
       </article>
 
-      <!-- 2 -->
       <article data-product-card data-search="gaming monitor 165hz ips"
         class="group relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-orange-500/20 transition-all duration-300 shimmer cursor-pointer">
         <div class="relative bg-gradient-to-b from-white/10 to-transparent p-5">
@@ -634,7 +616,6 @@
         </button>
       </article>
 
-      <!-- 3 -->
       <article data-product-card data-search="gaming microphone usb streaming"
         class="group relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-orange-500/20 transition-all duration-300 shimmer cursor-pointer">
         <div
@@ -669,7 +650,7 @@
         </button>
       </article>
 
-      <!-- 4 -->
+ 
       <article data-product-card data-search="controller charging dock dual"
         class="group relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-orange-500/20 transition-all duration-300 shimmer cursor-pointer">
         <div class="relative bg-gradient-to-b from-white/10 to-transparent p-5">
@@ -700,9 +681,8 @@
       </article>
     </div>
 
-    <!-- ROW 4 -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 my-11">
-      <!-- 1 -->
+      
       <article data-product-card data-search="gamepad controller wireless"
         class="group relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-orange-500/20 transition-all duration-300 shimmer cursor-pointer">
         <div
@@ -737,7 +717,6 @@
         </button>
       </article>
 
-      <!-- 2 -->
       <article data-product-card data-search="gaming keyboard compact 60 percent"
         class="group relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-orange-500/20 transition-all duration-300 shimmer cursor-pointer">
         <div class="relative bg-gradient-to-b from-white/10 to-transparent p-5">
@@ -767,7 +746,6 @@
         </button>
       </article>
 
-      <!-- 3 -->
       <article data-product-card data-search="gaming keyboard full size rgb"
         class="group relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-orange-500/20 transition-all duration-300 shimmer cursor-pointer">
         <div
@@ -802,7 +780,6 @@
         </button>
       </article>
 
-      <!-- 4 -->
       <article data-product-card data-search="keyboard wrist rest memory foam"
         class="group relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-orange-500/20 transition-all duration-300 shimmer cursor-pointer">
         <div class="relative bg-gradient-to-b from-white/10 to-transparent p-5">
@@ -834,7 +811,6 @@
     </div>
   </div>
 
-  <!-- Toggle Button -->
   <div class="text-center mt-8">
     <button id="toggleBtn" onclick="toggleCards()" type="button"
       class="toggle-fancy inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full shadow-lg transition-all duration-300 transform active:scale-95 text-white font-extrabold border border-white/10">
@@ -845,7 +821,6 @@
   </div>
 </section>
 
-<!-- Product Modal -->
 <div id="productModal" class="fixed inset-0 z-[999] hidden">
   <div data-modal-close class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
 
@@ -896,7 +871,6 @@
   </div>
 </div>
 
-        <!-- C2 Watches -->
         
       <section id="C2" class="scroll-mt-24 mx-auto max-w-7xl px-4 sm:px-6 lg:px-10 mt-20">
   <div class="flex items-center gap-5 mb-8">
@@ -911,7 +885,6 @@
     </div>
   </div>
 
-  <!-- ROW 1 -->
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 my-11">
     <article data-product-card data-search="heritage automatic watch swiss movement leather strap"
       class="group relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-pink-500/20 transition-all duration-300 shimmer cursor-pointer">
@@ -1033,10 +1006,9 @@
     </article>
   </div>
 
-  <!-- ROW 2 + ROW 3 (hidden) -->
   <div>
     <div id="container-card2" class="hidden">
-      <!-- ROW 2 -->
+      
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 my-11">
         <article data-product-card data-search="moonphase watch rose gold complications"
           class="group relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-pink-500/20 transition-all duration-300 shimmer cursor-pointer">
@@ -1160,8 +1132,6 @@
           </button>
         </article>
       </div>
-
-      <!-- ROW 3 -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 my-11">
         <article data-product-card data-search="dress watch diamond bezel mother of pearl dial"
           class="group relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-pink-500/20 transition-all duration-300 shimmer cursor-pointer">
@@ -1284,7 +1254,6 @@
       </div>
     </div>
 
-    <!-- Attractive Toggle Button -->
     <div class="text-center mt-8">
       <button id="toggleBtn2" onclick="toggleCards2()" type="button"
         class="toggle-fancy toggle-fancy--pink inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full shadow-lg transition-all duration-300 active:scale-95 text-white font-extrabold border border-white/10">
@@ -1309,12 +1278,7 @@
     </div>
   </div>
 
-  <!-- Visible -->
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 my-11">
-    <!-- Your 4 articles (same) + cursor-pointer added -->
-    <!-- (I’m keeping your content, only added cursor-pointer at end of class) -->
-
-    <!-- 1 -->
     <article data-product-card data-search="classic cotton tee t-shirt premium cotton 50% off"
       class="group relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-300 shimmer cursor-pointer">
       <div class="absolute top-3 left-3 z-10 bg-gradient-to-r from-red-600 to-orange-600 text-white text-xs font-black px-3 py-1.5 rounded-full shadow-lg flex items-center gap-1">
@@ -1344,8 +1308,6 @@
         <span class="inline-flex items-center justify-center gap-2"><i class="fa-solid fa-cart-plus"></i> Add to Cart</span>
       </button>
     </article>
-
-    <!-- 2 -->
     <article data-product-card data-search="street style tee t-shirt urban modern fit"
       class="group relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-300 shimmer cursor-pointer">
       <div class="relative bg-gradient-to-b from-white/10 to-transparent p-5">
@@ -1372,7 +1334,6 @@
       </button>
     </article>
 
-    <!-- 3 -->
     <article data-product-card data-search="essential crew neck t-shirt clearance breathable durable"
       class="group relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-300 shimmer cursor-pointer">
       <div class="absolute top-3 left-3 z-10 bg-gradient-to-r from-green-600 to-emerald-600 text-white text-xs font-black px-3 py-1.5 rounded-full shadow-lg flex items-center gap-1">
@@ -1431,11 +1392,8 @@
     </article>
   </div>
 
-  <!-- Hidden -->
+  
   <div id="container-card3" class="hidden">
-    <!-- ====== AAPKA EXISTING container-card3 EXACTLY (2 grids) ====== -->
-    <!-- IMPORTANT: har article me cursor-pointer add kar dein -->
-    <!-- (Aap ne jo container-card3 ka content bheja hai, same paste kar do yahan; sirf class me cursor-pointer) -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 my-11">
                 <article data-product-card data-search="classic cotton tee t-shirt premium cotton 50% off"
                     class="group relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-300 shimmer">
@@ -1744,10 +1702,6 @@
   </div>
 </section>
 
-
-<!-- =========================
-  C4 Tech (UPDATED)
-========================= -->
 <section id="C4" class="scroll-mt-24 mx-auto max-w-7xl px-4 sm:px-6 lg:px-10 mt-20 mb-20">
   <div class="flex items-center gap-5 mb-8">
     <div class="relative rounded-2xl border border-purple-500/30 bg-gradient-to-br from-purple-500/20 to-transparent p-4">
@@ -1761,9 +1715,7 @@
     </div>
   </div>
 
-  <!-- Visible -->
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 my-11">
-    <!-- Your visible 4 articles (same) + cursor-pointer add kar diya -->
     <article data-product-card data-search="pro x smartphone flagship display camera"
       class="group relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-300 shimmer cursor-pointer">
       <div class="relative bg-gradient-to-b from-white/10 to-transparent p-5">
@@ -1873,7 +1825,6 @@
     </article>
   </div>
 
-  <!-- Hidden -->
   <div id="container-card4" class="hidden">
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 my-11">
                 <article data-product-card data-search="pro x smartphone flagship display camera"
@@ -2174,9 +2125,6 @@
 </section>
 
 
-<!-- =========================
-  PRODUCT MODAL (Add once)
-========================= -->
 <div id="productModal" class="fixed inset-0 z-[999] hidden">
   <div data-modal-close class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
 
@@ -2228,7 +2176,6 @@
 
 
 
-        <!-- Footer -->
         <footer class="border-t border-white/10 bg-black/40 backdrop-blur-sm">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10 py-12">
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
@@ -2288,7 +2235,6 @@
         </footer>
     </main>
 
-    <!-- Toast (same as home) -->
     <div id="toast"
         class="fixed bottom-6 right-6 z-50 hidden rounded-2xl border border-white/20 bg-gradient-to-br from-gray-900 to-black backdrop-blur-xl px-5 py-4 shadow-2xl glow-orange min-w-[280px]">
         <div class="flex items-center gap-4">
@@ -2306,8 +2252,6 @@
             </button>
         </div>
     </div>
-
-    <!-- Products JS (cart + toast + year + search) -->
     <script src="script.js"></script>
 </body>
 

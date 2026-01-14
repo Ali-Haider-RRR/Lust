@@ -1,347 +1,139 @@
+document.addEventListener('DOMContentLoaded', () => {
+  const CART_KEY = 'cartItems';
 
-(() => {
-  const cartCountEl = document.querySelector("[data-cart-count]");
-  const toast = document.getElementById("toast");
-  const year = document.getElementById("year");
+  const $ = (sel, root = document) => root.querySelector(sel);
+  const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 
-  if (year) year.textContent = new Date().getFullYear();
+  const money = (n) => '$' + (Math.round((Number(n) || 0) * 100) / 100).toFixed(2);
 
-  let count = 0;
+  function loadCart() {
+    try { return JSON.parse(localStorage.getItem(CART_KEY) || '[]'); }
+    catch { return []; }
+  }
+
+  function saveCart(items) {
+    localStorage.setItem(CART_KEY, JSON.stringify(items));
+  }
+
+  function totalQty(items) {
+    return items.reduce((a, it) => a + (it.qty || 0), 0);
+  }
+
+  function updateBadges() {
+    const items = loadCart();
+    const qty = totalQty(items);
+    $$('[data-cart-count]').forEach(el => (el.textContent = String(qty)));
+  }
+
+  $$('[id="year"]').forEach(el => (el.textContent = new Date().getFullYear()));
+
+  function parsePrice(text) {
+    return Number((text || '').replace(/[^0-9.]/g, '')) || 0;
+  }
+
+  function addCardToCart(cardEl) {
+    if (!cardEl) return;
+
+    const name = cardEl.querySelector('h3')?.textContent?.trim() || 'Product';
+    const image = cardEl.querySelector('img')?.getAttribute('src') || '';
+    const priceText = cardEl.querySelector('.text-2xl')?.textContent?.trim() || '0';
+    const price = parsePrice(priceText);
+
+    const id = cardEl.getAttribute('data-id') || (name + '|' + image + '|' + price);
+
+    const items = loadCart();
+    const idx = items.findIndex(x => String(x.id) === String(id));
+
+    if (idx >= 0) items[idx].qty = (items[idx].qty || 1) + 1;
+    else items.push({ id, name, image, price, qty: 1 });
+
+    saveCart(items);
+    updateBadges();
+  }
+
+  function addToCartFromButton(btn) {
+    const card = btn.closest('[data-product-card]') || btn.closest('article');
+    addCardToCart(card);
+  }
+
+  const toast = $('#toast');
+  const toastMessage = $('#toastMessage');
+  const closeToastBtn = $('#closeToastBtn');
   let toastTimer = null;
 
-  function showToast() {
+  function hideToast() {
     if (!toast) return;
-    toast.classList.remove("hidden");
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => toast.classList.add("hidden"), 2000);
+    toast.classList.remove('show');
+    setTimeout(() => toast.classList.add('hidden'), 300);
   }
 
-  document.querySelectorAll("[data-add-to-cart]").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      count += 1;
-      if (cartCountEl) cartCountEl.textContent = String(count);
-      showToast();
+  function showToast(message = 'Added to cart') {
+    if (!toast) return;
+    if (toastMessage) toastMessage.textContent = message;
 
-      cartCountEl?.classList.add('animate-pulse');
-      setTimeout(() => cartCountEl?.classList.remove('animate-pulse'), 600);
+    if (toastTimer) clearTimeout(toastTimer);
+
+    toast.classList.remove('hidden');
+    requestAnimationFrame(() => toast.classList.add('show'));
+
+    toastTimer = setTimeout(hideToast, 2500);
+  }
+
+  closeToastBtn?.addEventListener('click', hideToast);
+  toast?.addEventListener('click', hideToast);
+
+  $$('[data-add-to-cart]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      addToCartFromButton(btn);
+      showToast('Item added to cart!');
     });
   });
-})();
 
+  const input = $('#searchInput');
+  const clearBtn = $('#clearSearch');
+  const resultsCount = $('#resultsCount');
+  const noResults = $('#noResults');
+  const cards = $$('[data-product-card]');
 
-document.getElementById('year').textContent = new Date().getFullYear();
+  function normalize(s) { return (s || '').toLowerCase().trim(); }
 
-const input = document.getElementById('searchInput');
-const clearBtn = document.getElementById('clearSearch');
-const cards = Array.from(document.querySelectorAll('[data-product-card]'));
-const resultsCount = document.getElementById('resultsCount');
-const noResults = document.getElementById('noResults');
+  function applyFilter() {
+    if (!input) return;
+    const q = normalize(input.value);
+    clearBtn?.classList.toggle('hidden', q.length === 0);
 
-function normalize(s) { return (s || '').toLowerCase().trim(); }
+    let shown = 0;
+    for (const card of cards) {
+      const hay = normalize(card.getAttribute('data-search'));
+      const match = q === '' || hay.includes(q);
+      card.classList.toggle('hidden', !match);
+      if (match) shown += 1;
+    }
 
-function applyFilter() {
-  const q = normalize(input.value);
-  clearBtn.classList.toggle('hidden', q.length === 0);
-
-  let shown = 0;
-  for (const card of cards) {
-    const hay = normalize(card.getAttribute('data-search'));
-    const match = q === '' || hay.includes(q);
-    card.classList.toggle('hidden', !match);
-    if (match) shown += 1;
+    if (resultsCount) resultsCount.textContent = String(shown);
+    noResults?.classList.toggle('hidden', shown !== 0);
   }
 
-  resultsCount.textContent = String(shown);
-  noResults.classList.toggle('hidden', shown !== 0);
-}
+  input?.addEventListener('input', applyFilter);
+  clearBtn?.addEventListener('click', () => {
+    if (!input) return;
+    input.value = '';
+    input.focus();
+    applyFilter();
+  });
+  if (input) applyFilter();
 
-input.addEventListener('input', applyFilter);
-clearBtn.addEventListener('click', () => {
-  input.value = '';
-  input.focus();
-  applyFilter();
-});
-applyFilter();
+  (function initModal() {
+    const modal = $('#productModal');
+    if (!modal) return;
 
-function toggleCards() {
-    const container = document.getElementById('container-card');
- const btn = event.currentTarget;
-    if (container.classList.contains('hidden')) {
-      container.classList.remove('hidden');
-      btn.textContent = "Show Less items";
-    } else {
-      container.classList.add('hidden');
-      btn.textContent = "Show all items";
-    }
-  }
-
-  function toggleCards2() {
-    const container = document.getElementById('container-card2');
- const btn = event.currentTarget;
-    if (container.classList.contains('hidden')) {
-      container.classList.remove('hidden');
-      btn.textContent = "Show Less items";
-    } else {
-      container.classList.add('hidden');
-      btn.textContent = "Show all items";
-    }
-  }
-
-  function toggleCards3() {
-    const container = document.getElementById('container-card3');
- const btn = event.currentTarget;
-    if (container.classList.contains('hidden')) {
-      container.classList.remove('hidden');
-      btn.textContent = "Show Less items";
-    } else {
-      container.classList.add('hidden');
-      btn.textContent = "Show all items";
-    }
-  }
-
-  function toggleCards4() {
-    const container = document.getElementById('container-card4');
- const btn = event.currentTarget;
-    if (container.classList.contains('hidden')) {
-      container.classList.remove('hidden');
-      btn.textContent = "Show Less items";
-    } else {
-      container.classList.add('hidden');
-      btn.textContent = "Show all items";
-    }
-  }
-
-  
-  (function () {
-    const modal = document.getElementById('productModal');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalImg = document.getElementById('modalImg');
-    const modalDesc = document.getElementById('modalDesc');
-    const modalPrice = document.getElementById('modalPrice');
-    const modalOldPrice = document.getElementById('modalOldPrice');
-    const modalAddBtn = document.getElementById('modalAddToCart');
-
-    let activeCard = null;
-
-    function extractProduct(card) {
-      const titleEl = card.querySelector('h3');
-      const imgEl = card.querySelector('img');
-      const descEl = card.querySelector('p');
-      const priceEl = card.querySelector('.text-2xl');
-      const oldEl = card.querySelector('.line-through');
-
-      return {
-        name: titleEl ? titleEl.textContent.trim() : 'Product',
-        img: imgEl ? imgEl.getAttribute('src') : '',
-        imgAlt: imgEl ? (imgEl.getAttribute('alt') || '') : '',
-        desc: descEl ? descEl.textContent.trim() : '',
-        price: priceEl ? priceEl.textContent.trim() : '',
-        oldPrice: oldEl ? oldEl.textContent.trim() : ''
-      };
-    }
-
-    function openModal(card) {
-      activeCard = card;
-      const p = extractProduct(card);
-
-      modalTitle.textContent = p.name;
-      modalImg.src = p.img;
-      modalImg.alt = p.imgAlt || p.name;
-      modalDesc.textContent = p.desc;
-      modalPrice.textContent = p.price;
-
-      if (p.oldPrice) {
-        modalOldPrice.textContent = p.oldPrice;
-        modalOldPrice.classList.remove('hidden');
-      } else {
-        modalOldPrice.textContent = '';
-        modalOldPrice.classList.add('hidden');
-      }
-
-      modal.classList.remove('hidden');
-      requestAnimationFrame(() => modal.classList.add('modal-open'));
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeModal() {
-      modal.classList.remove('modal-open');
-      setTimeout(() => modal.classList.add('hidden'), 180);
-      document.body.style.overflow = '';
-      activeCard = null;
-    }
-
-    // Card click -> open modal (but ignore Add to cart click)
-    document.addEventListener('click', function (e) {
-      const addBtn = e.target.closest('[data-add-to-cart]');
-      if (addBtn) return;
-
-      const card = e.target.closest('[data-product-card]');
-      if (!card) return;
-
-      openModal(card);
-    });
-
-    // Close modal (backdrop or X)
-    modal.addEventListener('click', function (e) {
-      if (e.target.closest('[data-modal-close]')) closeModal();
-    });
-
-    // ESC close
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
-    });
-
-    // Modal Add -> trigger original button click (same side-cart effect)
-    modalAddBtn.addEventListener('click', function () {
-      if (!activeCard) return;
-      const originalAdd = activeCard.querySelector('[data-add-to-cart]');
-      if (originalAdd) originalAdd.click();
-      closeModal();
-    });
-
-    // Show all / Show less
-    window.toggleCards = function () {
-      const container = document.getElementById('container-card');
-      const btn = document.getElementById('toggleBtn');
-      const isHidden = container.classList.contains('hidden');
-
-      if (isHidden) {
-        container.classList.remove('hidden');
-        btn.innerHTML = '<i class="fa-solid fa-layer-group"></i><span>Show less</span><i class="fa-solid fa-chevron-up text-sm opacity-90"></i>';
-      } else {
-        container.classList.add('hidden');
-        btn.innerHTML = '<i class="fa-solid fa-layer-group"></i><span>Show all items</span><i class="fa-solid fa-chevron-down text-sm opacity-90"></i>';
-        const section = document.getElementById('C1');
-        if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    };
-  })();
-   (function () {
-    // ---- Modal init guard (taake multiple sections me script duplicate ho to bhi issue na ho)
-    if (!window.__productModalInit) {
-      window.__productModalInit = true;
-
-      const modal = document.getElementById('productModal');
-      const modalTitle = document.getElementById('modalTitle');
-      const modalImg = document.getElementById('modalImg');
-      const modalDesc = document.getElementById('modalDesc');
-      const modalPrice = document.getElementById('modalPrice');
-      const modalOldPrice = document.getElementById('modalOldPrice');
-      const modalAddBtn = document.getElementById('modalAddToCart');
-
-      let activeCard = null;
-
-      function extractProduct(card) {
-        const titleEl = card.querySelector('h3');
-        const imgEl = card.querySelector('img');
-        const descEl = card.querySelector('p');
-        const priceEl = card.querySelector('.text-2xl');
-        const oldEl = card.querySelector('.line-through');
-
-        return {
-          name: titleEl ? titleEl.textContent.trim() : 'Product',
-          img: imgEl ? imgEl.getAttribute('src') : '',
-          imgAlt: imgEl ? (imgEl.getAttribute('alt') || '') : '',
-          desc: descEl ? descEl.textContent.trim() : '',
-          price: priceEl ? priceEl.textContent.trim() : '',
-          oldPrice: oldEl ? oldEl.textContent.trim() : ''
-        };
-      }
-
-      function openModal(card) {
-        if (!modal) return;
-
-        activeCard = card;
-        const p = extractProduct(card);
-
-        modalTitle.textContent = p.name;
-        modalImg.src = p.img;
-        modalImg.alt = p.imgAlt || p.name;
-        modalDesc.textContent = p.desc;
-        modalPrice.textContent = p.price;
-
-        if (p.oldPrice) {
-          modalOldPrice.textContent = p.oldPrice;
-          modalOldPrice.classList.remove('hidden');
-        } else {
-          modalOldPrice.textContent = '';
-          modalOldPrice.classList.add('hidden');
-        }
-
-        modal.classList.remove('hidden');
-        requestAnimationFrame(() => modal.classList.add('modal-open'));
-        document.body.style.overflow = 'hidden';
-      }
-
-      function closeModal() {
-        if (!modal) return;
-        modal.classList.remove('modal-open');
-        setTimeout(() => modal.classList.add('hidden'), 180);
-        document.body.style.overflow = '';
-        activeCard = null;
-      }
-
-      // Card click -> open modal (but ignore Add-to-cart click)
-      document.addEventListener('click', function (e) {
-        const addBtn = e.target.closest('[data-add-to-cart]');
-        if (addBtn) return;
-
-        const card = e.target.closest('[data-product-card]');
-        if (!card) return;
-
-        openModal(card);
-      });
-
-      // Close modal (backdrop or X)
-      modal && modal.addEventListener('click', function (e) {
-        if (e.target.closest('[data-modal-close]')) closeModal();
-      });
-
-      // ESC close
-      document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) closeModal();
-      });
-
-      // Modal Add -> trigger original button click (same side-cart effect)
-      modalAddBtn && modalAddBtn.addEventListener('click', function () {
-        if (!activeCard) return;
-        const originalAdd = activeCard.querySelector('[data-add-to-cart]');
-        if (originalAdd) originalAdd.click();
-        closeModal();
-      });
-    }
-
-    // ---- ToggleCards2 (Watches)
-    window.toggleCards2 = function () {
-      const container = document.getElementById('container-card2');
-      const btn = document.getElementById('toggleBtn2');
-      if (!container || !btn) return;
-
-      const isHidden = container.classList.contains('hidden');
-
-      if (isHidden) {
-        container.classList.remove('hidden');
-        btn.innerHTML = '<i class="fa-solid fa-layer-group"></i><span>Show less</span><i class="fa-solid fa-chevron-up text-sm opacity-90"></i>';
-      } else {
-        container.classList.add('hidden');
-        btn.innerHTML = '<i class="fa-solid fa-layer-group"></i><span>Show all items</span><i class="fa-solid fa-chevron-down text-sm opacity-90"></i>';
-        const section = document.getElementById('C2');
-        if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    };
-  })();
-
-   (function () {
-    if (window.__shopUIInit) return;
-    window.__shopUIInit = true;
-
-    const modal = document.getElementById('productModal');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalImg = document.getElementById('modalImg');
-    const modalDesc = document.getElementById('modalDesc');
-    const modalPrice = document.getElementById('modalPrice');
-    const modalOldPrice = document.getElementById('modalOldPrice');
-    const modalAddBtn = document.getElementById('modalAddToCart');
+    const modalTitle = $('#modalTitle');
+    const modalImg = $('#modalImg');
+    const modalDesc = $('#modalDesc');
+    const modalPrice = $('#modalPrice');
+    const modalOldPrice = $('#modalOldPrice');
+    const modalAddBtn = $('#modalAddToCart');
 
     let activeCard = null;
 
@@ -356,15 +148,11 @@ function toggleCards() {
     function copyGradientClasses(fromEl, toEl, ensure = []) {
       if (!fromEl || !toEl) return;
 
-      // remove existing gradient classes from target
       const remove = [];
       toEl.classList.forEach(c => { if (gradientPatterns.some(rx => rx.test(c))) remove.push(c); });
       remove.forEach(c => toEl.classList.remove(c));
 
-      // add gradient classes from source
       fromEl.classList.forEach(c => { if (gradientPatterns.some(rx => rx.test(c))) toEl.classList.add(c); });
-
-      // ensure required classes
       ensure.forEach(c => toEl.classList.add(c));
     }
 
@@ -372,7 +160,7 @@ function toggleCards() {
       const titleEl = card.querySelector('h3');
       const imgEl = card.querySelector('img');
       const descEl = card.querySelector('p');
-      const priceEl = card.querySelector('.text-2xl'); // your main price span
+      const priceEl = card.querySelector('.text-2xl');
       const oldEl = card.querySelector('.line-through');
 
       return {
@@ -388,26 +176,27 @@ function toggleCards() {
     }
 
     function openModal(card) {
-      if (!modal) return;
       activeCard = card;
-
       const p = extractProduct(card);
 
-      modalTitle.textContent = p.name;
-      modalImg.src = p.img;
-      modalImg.alt = p.imgAlt || p.name;
-      modalDesc.textContent = p.desc;
-      modalPrice.textContent = p.price;
+      if (modalTitle) modalTitle.textContent = p.name;
+      if (modalImg) {
+        modalImg.src = p.img;
+        modalImg.alt = p.imgAlt || p.name;
+      }
+      if (modalDesc) modalDesc.textContent = p.desc;
+      if (modalPrice) modalPrice.textContent = p.price;
 
-      if (p.oldPrice) {
-        modalOldPrice.textContent = p.oldPrice;
-        modalOldPrice.classList.remove('hidden');
-      } else {
-        modalOldPrice.textContent = '';
-        modalOldPrice.classList.add('hidden');
+      if (modalOldPrice) {
+        if (p.oldPrice) {
+          modalOldPrice.textContent = p.oldPrice;
+          modalOldPrice.classList.remove('hidden');
+        } else {
+          modalOldPrice.textContent = '';
+          modalOldPrice.classList.add('hidden');
+        }
       }
 
-      // Theme: price gradient + button gradient same as card
       copyGradientClasses(p.priceEl, modalPrice, ['bg-clip-text', 'text-transparent']);
       copyGradientClasses(p.addBtnEl, modalAddBtn);
 
@@ -417,15 +206,13 @@ function toggleCards() {
     }
 
     function closeModal() {
-      if (!modal) return;
       modal.classList.remove('modal-open');
       setTimeout(() => modal.classList.add('hidden'), 180);
       document.body.style.overflow = '';
       activeCard = null;
     }
 
-    // Card click -> modal (but ignore Add-to-cart click)
-    document.addEventListener('click', function (e) {
+    document.addEventListener('click', (e) => {
       if (e.target.closest('[data-add-to-cart]')) return;
 
       const card = e.target.closest('[data-product-card]');
@@ -434,43 +221,306 @@ function toggleCards() {
       openModal(card);
     });
 
-    // Close modal: backdrop or X
-    modal && modal.addEventListener('click', function (e) {
+    modal.addEventListener('click', (e) => {
       if (e.target.closest('[data-modal-close]')) closeModal();
     });
 
-    // ESC close
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) closeModal();
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
     });
 
-    // Modal Add -> trigger original Add-to-cart (same side cart effect)
-    modalAddBtn && modalAddBtn.addEventListener('click', function () {
+    modalAddBtn?.addEventListener('click', () => {
       if (!activeCard) return;
-      const originalAdd = activeCard.querySelector('[data-add-to-cart]');
-      if (originalAdd) originalAdd.click();
+      addCardToCart(activeCard);
+      showToast('Item added to cart!');
       closeModal();
     });
-
-    // One generic toggle for all sections
-    window.toggleSection = function (containerId, btnId, sectionId) {
-      const container = document.getElementById(containerId);
-      const btn = document.getElementById(btnId);
-      if (!container || !btn) return;
-
-      const isHidden = container.classList.contains('hidden');
-
-      if (isHidden) {
-        container.classList.remove('hidden');
-        btn.innerHTML = '<i class="fa-solid fa-layer-group"></i><span>Show less</span><i class="fa-solid fa-chevron-up text-sm opacity-90"></i>';
-        btn.setAttribute('aria-expanded', 'true');
-      } else {
-        container.classList.add('hidden');
-        btn.innerHTML = '<i class="fa-solid fa-layer-group"></i><span>Show all items</span><i class="fa-solid fa-chevron-down text-sm opacity-90"></i>';
-        btn.setAttribute('aria-expanded', 'false');
-
-        const section = document.getElementById(sectionId);
-        if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    };
   })();
+
+  function toggleSection(containerId, btnId, sectionId) {
+    const container = document.getElementById(containerId);
+    const btn = document.getElementById(btnId);
+    if (!container || !btn) return;
+
+    const isHidden = container.classList.contains('hidden');
+
+    if (isHidden) {
+      container.classList.remove('hidden');
+      btn.innerHTML = '<i class="fa-solid fa-layer-group"></i><span>Show less</span><i class="fa-solid fa-chevron-up text-sm opacity-90"></i>';
+      btn.setAttribute('aria-expanded', 'true');
+    } else {
+      container.classList.add('hidden');
+      btn.innerHTML = '<i class="fa-solid fa-layer-group"></i><span>Show all items</span><i class="fa-solid fa-chevron-down text-sm opacity-90"></i>';
+      btn.setAttribute('aria-expanded', 'false');
+
+      const section = document.getElementById(sectionId);
+      if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
+  window.toggleSection = toggleSection;
+  window.toggleCards = () => toggleSection('container-card', 'toggleBtn', 'C1');
+  window.toggleCards2 = () => toggleSection('container-card2', 'toggleBtn2', 'C2');
+  window.toggleCards3 = () => toggleSection('container-card3', 'toggleBtn3', 'C3');
+  window.toggleCards4 = () => toggleSection('container-card4', 'toggleBtn4', 'C4');
+
+  const cartList = $('#cartList');
+  if (cartList) {
+    const emptyCart = $('#emptyCart');
+    const clearCartBtn = $('#clearCartBtn');
+
+    const subtotalEl = $('#subtotal');
+    const shippingEl = $('#shipping');
+    const taxEl = $('#tax');
+    const totalEl = $('#total');
+
+    const payBtn = $('#payBtn');
+    const payError = $('#payError');
+
+    const onlineBox = $('#onlineBox');
+    const onlineFields = $('#onlineFields');
+    const cardFields = $('#cardFields');
+    const walletFields = $('#walletFields');
+    const onlineHint = $('#onlineHint');
+
+    const cardNumber = $('#cardNumber');
+    const cardExpiry = $('#cardExpiry');
+    const cardCvv = $('#cardCvv');
+    const walletNumber = $('#walletNumber');
+
+    const thanksModal = $('#thanksModal');
+    const thanksPanel = $('#thanksPanel');
+    const closeThanksBtn = $('#closeThanksBtn');
+
+    let selectedOnlineMethod = null;
+
+    function setError(msg) {
+      if (!payError) return;
+      if (!msg) {
+        payError.classList.add('hidden');
+        payError.textContent = '';
+        return;
+      }
+      payError.textContent = msg;
+      payError.classList.remove('hidden');
+    }
+
+    function calcTotals(items) {
+      const subtotal = items.reduce((a, it) => a + (Number(it.price) || 0) * (it.qty || 0), 0);
+      const shipping = items.length ? 0 : 0;
+      const tax = subtotal * 0.0;
+      const total = subtotal + shipping + tax;
+      return { subtotal, shipping, tax, total };
+    }
+
+    function renderCart() {
+      const items = loadCart();
+      updateBadges();
+
+      const t = calcTotals(items);
+      subtotalEl && (subtotalEl.textContent = money(t.subtotal));
+      shippingEl && (shippingEl.textContent = money(t.shipping));
+      taxEl && (taxEl.textContent = money(t.tax));
+      totalEl && (totalEl.textContent = money(t.total));
+
+      if (!items.length) {
+        cartList.innerHTML = '';
+        emptyCart?.classList.remove('hidden');
+        if (payBtn) payBtn.textContent = 'Place Order';
+        return;
+      }
+
+      emptyCart?.classList.add('hidden');
+
+      cartList.innerHTML = items.map(it => {
+        const lineTotal = (Number(it.price) || 0) * (it.qty || 0);
+        const safeName = (it.name || 'Product').replaceAll('"', '&quot;');
+        return `
+          <div class="p-5 flex gap-4 items-start">
+            <div class="w-20 h-20 rounded-2xl overflow-hidden border border-white/10 bg-white/5 grid place-items-center flex-shrink-0">
+              <img src="${it.image || ''}" alt="${safeName}" class="w-full h-full object-cover" onerror="this.style.display='none'">
+            </div>
+
+            <div class="flex-1 min-w-0">
+              <div class="flex items-start justify-between gap-3">
+                <div class="min-w-0">
+                  <div class="font-black text-lg truncate">${it.name || 'Product'}</div>
+                  <div class="text-white/60 text-sm mt-0.5">${money(Number(it.price) || 0)}</div>
+                </div>
+
+                <button class="text-white/50 hover:text-white transition" data-action="remove" data-id="${it.id}">
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+              </div>
+
+              <div class="mt-4 flex items-center justify-between gap-4 flex-wrap">
+                <div class="inline-flex items-center rounded-2xl border border-white/12 bg-white/5 overflow-hidden">
+                  <button class="px-4 py-2 hover:bg-white/10 transition cursor-pointer" data-action="dec" data-id="${it.id}">-</button>
+                  <div class="px-4 py-2 font-bold min-w-12 text-center">${it.qty || 1}</div>
+                  <button class="px-4 py-2 hover:bg-white/10 transition cursor-pointer" data-action="inc" data-id="${it.id}">+</button>
+                </div>
+
+                <div class="font-black text-white/90">
+                  <span class="text-white/50 font-semibold mr-2">Total:</span>${money(lineTotal)}
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      const payMode = document.querySelector('input[name="payMode"]:checked')?.value || 'cod';
+      if (payBtn) payBtn.textContent = payMode === 'online' ? 'Pay Now' : 'Place Order';
+    }
+
+    function updateQty(id, delta) {
+      const items = loadCart();
+      const idx = items.findIndex(x => String(x.id) === String(id));
+      if (idx === -1) return;
+
+      items[idx].qty = (items[idx].qty || 1) + delta;
+      if (items[idx].qty <= 0) items.splice(idx, 1);
+
+      saveCart(items);
+      renderCart();
+    }
+
+    function removeItem(id) {
+      const items = loadCart().filter(x => String(x.id) !== String(id));
+      saveCart(items);
+      renderCart();
+    }
+
+    cartList.addEventListener('click', (e) => {
+      const btn = e.target.closest('button[data-action]');
+      if (!btn) return;
+
+      const action = btn.getAttribute('data-action');
+      const id = btn.getAttribute('data-id');
+
+      if (action === 'inc') updateQty(id, +1);
+      if (action === 'dec') updateQty(id, -1);
+      if (action === 'remove') removeItem(id);
+    });
+
+    clearCartBtn?.addEventListener('click', () => {
+      saveCart([]);
+      renderCart();
+    });
+
+    function resetOnlineUI() {
+      selectedOnlineMethod = null;
+      $$('[data-method]').forEach(b => b.classList.remove('active'));
+      onlineFields?.classList.add('hidden');
+      cardFields?.classList.add('hidden');
+      walletFields?.classList.add('hidden');
+      if (cardNumber) cardNumber.value = '';
+      if (cardExpiry) cardExpiry.value = '';
+      if (cardCvv) cardCvv.value = '';
+      if (walletNumber) walletNumber.value = '';
+      if (onlineHint) onlineHint.textContent = 'Select a method to enter details';
+    }
+
+    $$('input[name="payMode"]').forEach(r => {
+      r.addEventListener('change', () => {
+        setError('');
+        const mode = document.querySelector('input[name="payMode"]:checked')?.value || 'cod';
+
+        if (mode === 'online') {
+          onlineBox?.classList.remove('hidden');
+          if (payBtn) payBtn.textContent = 'Pay Now';
+        } else {
+          onlineBox?.classList.add('hidden');
+          if (payBtn) payBtn.textContent = 'Place Order';
+          resetOnlineUI();
+        }
+      });
+    });
+
+    $$('[data-method]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        setError('');
+
+        $$('[data-method]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        selectedOnlineMethod = btn.getAttribute('data-method');
+        onlineFields?.classList.remove('hidden');
+
+        if (selectedOnlineMethod === 'card') {
+          cardFields?.classList.remove('hidden');
+          walletFields?.classList.add('hidden');
+          if (onlineHint) onlineHint.textContent = 'Enter card details';
+        } else {
+          cardFields?.classList.add('hidden');
+          walletFields?.classList.remove('hidden');
+          if (onlineHint) onlineHint.textContent = 'Enter account / mobile number';
+        }
+      });
+    });
+
+    function openThanks() {
+      if (!thanksModal || !thanksPanel) return;
+      thanksModal.classList.remove('hidden');
+      requestAnimationFrame(() => thanksPanel.classList.add('show'));
+    }
+
+    function closeThanks() {
+      if (!thanksModal || !thanksPanel) return;
+      thanksPanel.classList.remove('show');
+      setTimeout(() => thanksModal.classList.add('hidden'), 200);
+    }
+
+    closeThanksBtn?.addEventListener('click', closeThanks);
+
+    thanksModal?.addEventListener('click', (e) => {
+      const backdrop = thanksModal.firstElementChild;
+      if (e.target === backdrop) closeThanks();
+    });
+
+    payBtn?.addEventListener('click', () => {
+      setError('');
+
+      const items = loadCart();
+      if (!items.length) {
+        setError('Your cart is empty.');
+        return;
+      }
+
+      const mode = document.querySelector('input[name="payMode"]:checked')?.value || 'cod';
+
+      if (mode === 'online') {
+        if (!selectedOnlineMethod) {
+          setError('Please select an online payment method.');
+          return;
+        }
+
+        if (selectedOnlineMethod === 'card') {
+          const cn = (cardNumber?.value || '').replace(/\s+/g, '').trim();
+          const ex = (cardExpiry?.value || '').trim();
+          const cv = (cardCvv?.value || '').trim();
+
+          if (cn.length < 12 || ex.length < 4 || cv.length < 3) {
+            setError('Please enter valid card details.');
+            return;
+          }
+        } else {
+          const wn = (walletNumber?.value || '').trim();
+          if (wn.length < 10) {
+            setError('Please enter a valid account / mobile number.');
+            return;
+          }
+        }
+      }
+
+      saveCart([]);
+      resetOnlineUI();
+      renderCart();
+      openThanks();
+    });
+
+    renderCart();
+  }
+
+  updateBadges();
+});
